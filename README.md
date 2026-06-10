@@ -80,28 +80,7 @@ Admins can:
 
 ---
 
-## 🏗 System Architecture
 
-The system follows a modular Laravel MVC architecture with clear separation of concerns.
-
-```mermaid
-flowchart TD
-
-A[User / Agent / Admin] --> B[Laravel Controllers (API / Web Layer)]
-
-B --> C[Service Layer - Business Logic]
-C --> D[Eloquent Models - ORM Layer]
-
-D --> E[(MySQL Database)]
-
-B --> F[Authentication & RBAC Middleware]
-F --> C
-
-subgraph Admin Panel
-G[Admin Dashboard]
-end
-
-G --> B
 
 flowchart LR
 
