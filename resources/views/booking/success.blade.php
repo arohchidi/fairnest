@@ -20,7 +20,7 @@
         * {
             font-family: 'Inter', sans-serif;
         }
-    </style>
+    </style> 
     
     @stack('styles')
 </head>
@@ -37,7 +37,7 @@
             <div class="inline-flex items-center justify-center w-24 h-24 bg-green-100 rounded-full mb-6 animate-bounce">
                 <i class="fas fa-check-circle text-green-500 text-5xl"></i>
             </div>
-            <h1 class="text-3xl font-bold text-gray-800 mb-2">Booking Confirmed!</h1>
+            <h1 class="text-3xl font-bold text-gray-800 mb-2">Booking Confirmed </h1>
             <p class="text-gray-500">Your reservation has been successfully processed.</p>
         </div>
         
