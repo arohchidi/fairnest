@@ -38,7 +38,7 @@
                 <i class="fas fa-check-circle text-green-500 text-5xl"></i>
             </div>
             <h1 class="text-3xl font-bold text-gray-800 mb-2">Booking Confirmed </h1>
-            <p class="text-gray-500">Your reservation has been successfully processed.</p>
+            <p class="text-gray-500">Your inspection appointment has been successfully submitted.</p>
         </div>
         
         <!-- Booking Details Card -->
