@@ -67,7 +67,10 @@ class PropertyController extends Controller
 
     public function showPropertyById($id):View{
      $id = $id;
-     $property = $this->propertyService->getPropertyById($id);
+     $data = $this->propertyService->getPropertyById($id);
+     
+     $property = $data['property'];
+     
     
     return view('admin.properties.show', compact('property'));
     }
@@ -75,7 +78,9 @@ class PropertyController extends Controller
 
     public function edit($id):View{
     $id = $id;
-    $property = $this->propertyService->getPropertyById($id);
+    $data = $this->propertyService->getPropertyById($id);
+     
+     $property = $data['property'];
     
     return view('admin.properties.edit', compact('property'));
     }

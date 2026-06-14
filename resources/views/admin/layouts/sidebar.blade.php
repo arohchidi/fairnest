@@ -30,52 +30,158 @@
         
         <!-- Navigation -->
         <nav class="space-y-1">
-            <p class="text-gray-500 text-xs uppercase tracking-wider font-semibold px-3 mb-3">Main</p>
             
+            <!-- Dashboard -->
             <a href="{{ route('admin.dashboard') }}" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg transition-all duration-200 {{ request()->routeIs('admin.dashboard') ? 'bg-[#2D6A4F] text-white shadow-lg' : 'text-gray-300 hover:bg-white/5' }}">
                 <i class="fas fa-chart-pie w-5"></i>
                 <span class="text-sm font-medium">Dashboard</span>
             </a>
             
-            <a href="#" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-gray-300 hover:bg-white/5 transition-all duration-200">
-                <i class="fas fa-building w-5"></i>
-                <span class="text-sm font-medium">Properties</span>
-                <span class="ml-auto text-xs bg-[#2D6A4F] px-2 py-0.5 rounded-full">12</span>
-            </a>
+            <!-- Properties Menu with Submenu -->
+            <div x-data="{ open: {{ request()->routeIs('admin.properties.*') ? 'true' : 'false' }} }">
+                <button @click="open = !open" class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-all duration-200 {{ request()->routeIs('admin.properties.*') ? 'bg-[#2D6A4F]/20 text-white' : 'text-gray-300 hover:bg-white/5' }}">
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-building w-5"></i>
+                        <span class="text-sm font-medium">Properties</span>
+                    </div>
+                    <i class="fas fa-chevron-down text-xs transition-transform duration-200" :class="{'rotate-180': open}"></i>
+                </button>
+                <div x-show="open" x-collapse class="ml-4 mt-1 space-y-1">
+                    <a href="{{ route('admin.properties.index') }}" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-sm transition-all duration-200 {{ request()->routeIs('admin.properties.index') ? 'bg-[#2D6A4F] text-white' : 'text-gray-400 hover:bg-white/5 hover:text-gray-200' }}">
+                        <i class="fas fa-list w-4"></i>
+                        <span>All Properties</span>
+                    </a>
+                    <a href="{{ route('admin.properties.create') }}" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-sm transition-all duration-200 {{ request()->routeIs('admin.properties.create') ? 'bg-[#2D6A4F] text-white' : 'text-gray-400 hover:bg-white/5 hover:text-gray-200' }}">
+                        <i class="fas fa-plus w-4"></i>
+                        <span>Add New Property</span>
+                    </a>
+                </div>
+            </div>
             
-            <a href="#" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-gray-300 hover:bg-white/5 transition-all duration-200">
-                <i class="fas fa-calendar-alt w-5"></i>
-                <span class="text-sm font-medium">Bookings</span>
-            </a>
+            <!-- Bookings Menu with Submenu -->
+            <div x-data="{ open: {{ request()->routeIs('admin.bookings.*') ? 'true' : 'false' }} }">
+                <button @click="open = !open" class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-all duration-200 {{ request()->routeIs('admin.bookings.*') ? 'bg-[#2D6A4F]/20 text-white' : 'text-gray-300 hover:bg-white/5' }}">
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-calendar-alt w-5"></i>
+                        <span class="text-sm font-medium">Bookings</span>
+                    </div>
+                    <i class="fas fa-chevron-down text-xs transition-transform duration-200" :class="{'rotate-180': open}"></i>
+                </button>
+                <div x-show="open" x-collapse class="ml-4 mt-1 space-y-1">
+                    <a href="{{ url('admin.bookings.index') }}" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-sm transition-all duration-200 {{ request()->routeIs('admin.bookings.index') ? 'bg-[#2D6A4F] text-white' : 'text-gray-400 hover:bg-white/5 hover:text-gray-200' }}">
+                        <i class="fas fa-list w-4"></i>
+                        <span>All Bookings</span>
+                    </a>
+                    <a href="{{ url('admin.bookings.create') }}" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-sm transition-all duration-200 {{ request()->routeIs('admin.bookings.create') ? 'bg-[#2D6A4F] text-white' : 'text-gray-400 hover:bg-white/5 hover:text-gray-200' }}">
+                        <i class="fas fa-plus w-4"></i>
+                        <span>Create Booking</span>
+                    </a>
+                    <a href="{{ url('admin.bookings.calendar') }}" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-sm transition-all duration-200 {{ request()->routeIs('admin.bookings.calendar') ? 'bg-[#2D6A4F] text-white' : 'text-gray-400 hover:bg-white/5 hover:text-gray-200' }}">
+                        <i class="fas fa-calendar-week w-4"></i>
+                        <span>Calendar View</span>
+                    </a>
+                </div>
+            </div>
             
-            <a href="#" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-gray-300 hover:bg-white/5 transition-all duration-200">
-                <i class="fas fa-users w-5"></i>
-                <span class="text-sm font-medium">Users</span>
-            </a>
+            <!-- Users Menu with Submenu -->
+            <div x-data="{ open: {{ request()->routeIs('admin.users.*') ? 'true' : 'false' }} }">
+                <button @click="open = !open" class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-all duration-200 {{ request()->routeIs('admin.users.*') ? 'bg-[#2D6A4F]/20 text-white' : 'text-gray-300 hover:bg-white/5' }}">
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-users w-5"></i>
+                        <span class="text-sm font-medium">Users</span>
+                    </div>
+                    <i class="fas fa-chevron-down text-xs transition-transform duration-200" :class="{'rotate-180': open}"></i>
+                </button>
+                <div x-show="open" x-collapse class="ml-4 mt-1 space-y-1">
+                    <a href="{{ route('admin.users.index') }}" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-sm transition-all duration-200 {{ request()->routeIs('admin.users.index') ? 'bg-[#2D6A4F] text-white' : 'text-gray-400 hover:bg-white/5 hover:text-gray-200' }}">
+                        <i class="fas fa-list w-4"></i>
+                        <span>All Users</span>
+                    </a>
+                    <a href="{{ route('admin.users.create') }}" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-sm transition-all duration-200 {{ request()->routeIs('admin.users.create') ? 'bg-[#2D6A4F] text-white' : 'text-gray-400 hover:bg-white/5 hover:text-gray-200' }}">
+                        <i class="fas fa-user-plus w-4"></i>
+                        <span>Create User</span>
+                    </a>
+                    <a href="{{ url('admin.users.roles') }}" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-sm transition-all duration-200 {{ request()->routeIs('admin.users.roles') ? 'bg-[#2D6A4F] text-white' : 'text-gray-400 hover:bg-white/5 hover:text-gray-200' }}">
+                        <i class="fas fa-tags w-4"></i>
+                        <span>User Roles</span>
+                    </a>
+                </div>
+            </div>
             
-            <a href="#" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-gray-300 hover:bg-white/5 transition-all duration-200">
-                <i class="fas fa-star w-5"></i>
-                <span class="text-sm font-medium">Reviews</span>
-            </a>
+            <!-- Reviews Menu with Submenu -->
+            <div x-data="{ open: {{ request()->routeIs('admin.reviews.*') ? 'true' : 'false' }} }">
+                <button @click="open = !open" class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-all duration-200 {{ request()->routeIs('admin.reviews.*') ? 'bg-[#2D6A4F]/20 text-white' : 'text-gray-300 hover:bg-white/5' }}">
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-star w-5"></i>
+                        <span class="text-sm font-medium">Reviews</span>
+                    </div>
+                    <i class="fas fa-chevron-down text-xs transition-transform duration-200" :class="{'rotate-180': open}"></i>
+                </button>
+                <div x-show="open" x-collapse class="ml-4 mt-1 space-y-1">
+                    <a href="{{ url('admin.reviews.index') }}" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-sm transition-all duration-200 {{ request()->routeIs('admin.reviews.index') ? 'bg-[#2D6A4F] text-white' : 'text-gray-400 hover:bg-white/5 hover:text-gray-200' }}">
+                        <i class="fas fa-list w-4"></i>
+                        <span>All Reviews</span>
+                    </a>
+                    <a href="{{ url('admin.reviews.pending') }}" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-sm transition-all duration-200 {{ request()->routeIs('admin.reviews.pending') ? 'bg-[#2D6A4F] text-white' : 'text-gray-400 hover:bg-white/5 hover:text-gray-200' }}">
+                        <i class="fas fa-clock w-4"></i>
+                        <span>Pending Reviews</span>
+                    </a>
+                </div>
+            </div>
         </nav>
         
         <nav class="mt-6 pt-6 border-t border-white/10 space-y-1">
             <p class="text-gray-500 text-xs uppercase tracking-wider font-semibold px-3 mb-3">Management</p>
             
-            <a href="#" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-gray-300 hover:bg-white/5 transition-all duration-200">
-                <i class="fas fa-chart-line w-5"></i>
-                <span class="text-sm font-medium">Analytics</span>
-            </a>
+            <!-- Analytics Menu with Submenu -->
+            <div x-data="{ open: {{ request()->routeIs('admin.analytics.*') ? 'true' : 'false' }} }">
+                <button @click="open = !open" class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-all duration-200 text-gray-300 hover:bg-white/5">
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-chart-line w-5"></i>
+                        <span class="text-sm font-medium">Analytics</span>
+                    </div>
+                    <i class="fas fa-chevron-down text-xs transition-transform duration-200" :class="{'rotate-180': open}"></i>
+                </button>
+                <div x-show="open" x-collapse class="ml-4 mt-1 space-y-1">
+                    <a href="{{ url('admin.analytics.overview') }}" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-sm transition-all duration-200 text-gray-400 hover:bg-white/5 hover:text-gray-200">
+                        <i class="fas fa-chart-pie w-4"></i>
+                        <span>Overview</span>
+                    </a>
+                    <a href="{{ url('admin.analytics.revenue') }}" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-sm transition-all duration-200 text-gray-400 hover:bg-white/5 hover:text-gray-200">
+                        <i class="fas fa-dollar-sign w-4"></i>
+                        <span>Revenue Report</span>
+                    </a>
+                    <a href="{{ url('admin.analytics.users') }}" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-sm transition-all duration-200 text-gray-400 hover:bg-white/5 hover:text-gray-200">
+                        <i class="fas fa-users w-4"></i>
+                        <span>User Analytics</span>
+                    </a>
+                </div>
+            </div>
             
-            <a href="#" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-gray-300 hover:bg-white/5 transition-all duration-200">
-                <i class="fas fa-cog w-5"></i>
-                <span class="text-sm font-medium">Settings</span>
-            </a>
-            
-            <a href="#" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-gray-300 hover:bg-white/5 transition-all duration-200">
-                <i class="fas fa-shield-alt w-5"></i>
-                <span class="text-sm font-medium">Security</span>
-            </a>
+            <!-- Settings Menu with Submenu -->
+            <div x-data="{ open: {{ request()->routeIs('admin.settings.*') ? 'true' : 'false' }} }">
+                <button @click="open = !open" class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-all duration-200 text-gray-300 hover:bg-white/5">
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-cog w-5"></i>
+                        <span class="text-sm font-medium">Settings</span>
+                    </div>
+                    <i class="fas fa-chevron-down text-xs transition-transform duration-200" :class="{'rotate-180': open}"></i>
+                </button>
+                <div x-show="open" x-collapse class="ml-4 mt-1 space-y-1">
+                    <a href="{{ url('admin.settings.general') }}" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-sm transition-all duration-200 text-gray-400 hover:bg-white/5 hover:text-gray-200">
+                        <i class="fas fa-globe w-4"></i>
+                        <span>General</span>
+                    </a>
+                    <a href="{{ url('admin.settings.payment') }}" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-sm transition-all duration-200 text-gray-400 hover:bg-white/5 hover:text-gray-200">
+                        <i class="fas fa-credit-card w-4"></i>
+                        <span>Payment</span>
+                    </a>
+                    <a href="{{ url('admin.settings.email') }}" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-sm transition-all duration-200 text-gray-400 hover:bg-white/5 hover:text-gray-200">
+                        <i class="fas fa-envelope w-4"></i>
+                        <span>Email Templates</span>
+                    </a>
+                </div>
+            </div>
         </nav>
     </div>
     
@@ -90,4 +196,5 @@
     </div>
 </aside>
 
+<!-- Mobile Overlay -->
 <div onclick="toggleSidebar()" class="fixed inset-0 bg-black/50 z-10 md:hidden"></div>

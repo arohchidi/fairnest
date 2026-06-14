@@ -1,5 +1,10 @@
 <?php
 
+
+
+
+use App\Http\Controllers\PropertyController as FrontPropertyController;
+
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\RegisterController;
 use App\Http\Controllers\Admin\ResetPasswordController;
@@ -7,20 +12,34 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SimpleRegisterController;
 use App\Http\Controllers\Admin\PropertyController;
 use App\Http\Controllers\Admin\UserController;
-
-
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\BookingController;
+use App\Http\Controllers\FrontController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 
+Route::get('about', [FrontController::class, 'about'])->name('about');
+Route::get('contact', [FrontController::class, 'contact'])->name('contact');
+
+//property
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/property-listings', [FrontPropertyController::class, 'properties'])->name('property.listings');
+Route::get('/property-details/{id}', [FrontPropertyController::class, 'propertyDetails'])->name('property.details');
+
+
+//Booking
+Route::get('/booking/book-property-inspection/{id}', [BookingController::class, 'index'])->name('book.inspection');
+Route::post('/booking/book-property-inspection', [BookingController::class, 'storeBooking'])->name('store.booking');
+Route::get('/booking/success', [BookingController::class, 'success'])->name('booking.success');
 
 
 
  Route::middleware('guest')->group(function () {
+
+  
+
         // Login
         Route::get('/login', [LoginController::class, 'index'])->name('login');
         Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
@@ -75,8 +94,10 @@ Route::post('/register-test', function() {
         //User Management
         Route::get('/users',[UserController::class, 'index'])->name('users.index');
         Route::get('/users/show/{id}',[UserController::class, 'show'])->name('users.show');
+        Route::get('/users/create',[UserController::class, 'create'])->name('users.create');
+        Route::post('/users/create',[UserController::class, 'store'])->name('users.store');
         Route::get('/users/edit/{id}',[UserController::class, 'edit'])->name('users.edit');
-        Route::post('/users/edit/{id}',[UserController::class, 'edit'])->name('users.update');
+        Route::patch('/users/edit/{id}',[UserController::class, 'updateUser'])->name('users.update');
         Route::patch('/users/toggle-status/{id}/toggle-status',[UserController::class, 'toggleStatus'])->name('users.toggle-status');
         Route::get('/users/delete-user/{id}',[UserController::class, 'delete'])->name('delete.user');
         
