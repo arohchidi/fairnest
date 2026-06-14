@@ -43,7 +43,7 @@
     
     <form method="POST" action="{{ route('admin.users.update', $user) }}" class="space-y-6">
         @csrf
-        @method('PUT')
+        @method('PATCH')
         
         <!-- Step 1: Basic Information -->
         <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
@@ -153,16 +153,16 @@
                         Select User Role
                     </label>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <!-- Tenant Role -->
+                        <!-- User Role -->
                         <label class="relative cursor-pointer">
-                            <input type="radio" name="role" value="tenant" {{ old('role', $user->role) == 'tenant' ? 'checked' : '' }} class="hidden peer">
+                            <input type="radio" name="role" value="user" {{ old('role', $user->role) == 'user' ? 'checked' : '' }} class="hidden peer">
                             <div class="p-4 border-2 rounded-xl transition-all peer-checked:border-[#2D6A4F] peer-checked:bg-[#2D6A4F]/5 hover:border-gray-300 border-gray-200">
                                 <div class="flex items-center space-x-3 mb-3">
                                     <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
                                         <i class="fas fa-user text-green-600 text-xl"></i>
                                     </div>
                                     <div>
-                                        <p class="font-semibold text-gray-800">Tenant</p>
+                                        <p class="font-semibold text-gray-800">Normal User</p>
                                         <p class="text-xs text-gray-500">Book properties</p>
                                     </div>
                                 </div>
@@ -175,10 +175,7 @@
                                         <i class="fas fa-check-circle text-green-500 w-3 mr-1"></i>
                                         Write property reviews
                                     </div>
-                                    <div class="flex items-center text-xs text-gray-600">
-                                        <i class="fas fa-check-circle text-green-500 w-3 mr-1"></i>
-                                        Manage own bookings
-                                    </div>
+                                    
                                 </div>
                             </div>
                             <div class="absolute top-3 right-3 text-[#2D6A4F] opacity-0 peer-checked:opacity-100 transition">
@@ -188,14 +185,14 @@
                         
                         <!-- Landlord Role -->
                         <label class="relative cursor-pointer">
-                            <input type="radio" name="role" value="landlord" {{ old('role', $user->role) == 'landlord' ? 'checked' : '' }} class="hidden peer">
+                            <input type="radio" name="role" value="agent" {{ old('role', $user->role) == 'agent' ? 'checked' : '' }} class="hidden peer">
                             <div class="p-4 border-2 rounded-xl transition-all peer-checked:border-[#2D6A4F] peer-checked:bg-[#2D6A4F]/5 hover:border-gray-300 border-gray-200">
                                 <div class="flex items-center space-x-3 mb-3">
                                     <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
                                         <i class="fas fa-building text-blue-600 text-xl"></i>
                                     </div>
                                     <div>
-                                        <p class="font-semibold text-gray-800">Landlord</p>
+                                        <p class="font-semibold text-gray-800">Agent</p>
                                         <p class="text-xs text-gray-500">List properties</p>
                                     </div>
                                 </div>

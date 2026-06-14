@@ -5,6 +5,12 @@ use App\Models\Property;
 use App\Contracts\Services\UserServiceInterface;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+
+
+
+
 use Override;
 
 class UserService implements UserServiceInterface
@@ -170,6 +176,45 @@ class UserService implements UserServiceInterface
         return [
             'user' => $user
         ];
+    }
+
+    //update user account
+    #[Override]
+    public function updateUser(int $id, array $data): array
+    {  
+    
+
+     $user =  $this->userModel->findOrFail($id);
+     $data = array_filter($data,
+        fn ($value) => $value !== null
+    );
+
+     $user->fill($data);
+     $user->save();
+     
+
+     return ['user' => $user->id ];
+     
+
+
+    }
+
+    #[Override]
+    public function createUser(array $data)
+    {
+         $user = $this->userModel->create([
+         'username' => $data['username'],
+         'email' => $data['email'],
+         'phone' => $data['phone'],
+         'role' => $data['role'],
+         'is_active' => $data['is_active'],
+         'password' => Hash::make($data['password']),
+
+         ]);
+
+         $user->save();
+        
+      return $user;
     }
 
 
