@@ -125,7 +125,7 @@ private function processImages($images): array
         $sortOrder = $filters['sort_order'] ?? 'desc';
         $query = $this->applySorting($query, $sortBy, $sortOrder);
 
-        $perPage = $filters['per_page'] ?? 15;
+        $perPage = $filters['per_page'] ?? 10;
 
         return $query->paginate($perPage);
         
@@ -193,14 +193,26 @@ private function processImages($images): array
     #[Override]
     public function getPropertyById(int $id)
     {
+
+
+    
         $property = $this->propertyModel->find($id);
-
-        
-
         if(!$property){
              throw new \Exception('Cannot find a property with the id'.$id);
-        }else{
-            return $property;}
+        }
+        $similarProperties =  $this->propertyModel->where('title', 'like', "%$property->title%")
+            ->where('id', '!=', $id)
+              ->orWhere('type_of_house', 'like', "%$property->type_of_house%")
+              ->orWhere('city', 'like', "%$property->city%")->limit(3)->get();
+        
+
+     
+            return  [
+             'property' => $property,
+             'similarProperties' => $similarProperties
+            ];
+            
+            
     }
             
 
@@ -224,7 +236,7 @@ DB::beginTransaction();
           $property->fill($data);
           $property->save();
           DB::commit(); 
-        return $property;
+          return $property;
         }catch(\Exception $e){
             DB::rollBack();
             throw $e;

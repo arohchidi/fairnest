@@ -214,18 +214,35 @@
                         <span class="text-gray-600">Rent</span>
                         <span class="text-2xl font-bold text-[#2D6A4F]">{{ App\Helper::formatNaira(number_format($property->rent_fee, 2)) }}</span>
                     </div>
-                    @if($property->cleaning_fee)
+                  @if($property->legal_fee)
                     <div class="flex justify-between items-center">
-                        <span class="text-gray-600">Cleaning Fee</span>
-                        <span class="text-gray-800">App\Helper::formatNaira(number_format($property->agency_fee, 2)) }}</span>
+                        <span class="text-gray-600">Legal Fee</span>
+                        <span class="text-gray-800">{{  App\Helper::formatNaira(number_format($property->legal_fee, 2))}}</span>
                     </div>
                     @endif
-                    @if($property->security_deposit)
+
+                    @if($property->caution_fee)
                     <div class="flex justify-between items-center">
-                        <span class="text-gray-600">Security Deposit</span>
-                        <span class="text-gray-800">${{ number_format($property->security_deposit, 2) }}</span>
+                        <span class="text-gray-600">Caution Fee</span>
+                        <span class="text-gray-800">{{App\Helper::formatNaira(number_format($property->caution_fee, 2)) }}</span>
                     </div>
                     @endif
+                    @if($property->mgt_fee)
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-600">Management Deposit</span>
+                        <span class="text-gray-800">{{ App\Helper::formatNaira(number_format($property->mgt_fee, 2))}}</span>
+                    </div>
+                    @endif
+
+                    @if($property->agency_fee)
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-600">Agency Fee</span>
+                        <span class="text-gray-800">{{ App\Helper::formatNaira(number_format($property->agency_fee, 2))}}</span>
+                    </div>
+                    @endif
+
+                    <h3 class="text-lg font-semibold text-gray-800">Total Cost:{{App\Helper::formatNaira(number_format($property->rent_fee + $property->agency_fee + $property->legal_fee  + $property->caution_fee + $property->mgt_fee))}}</h3>
+
                 </div>
             </div>
             
