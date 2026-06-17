@@ -85,7 +85,7 @@ class UserController extends Controller
     public function updateUser(int $id, UpdateUserRequest $request):HttpFoundationRedirectResponse
     {
         
-      $user = $this->userService->updateUser($id,$request->all());
+      $user = $this->userService->updateUser($id,$request->validated());
 
       
 
@@ -110,7 +110,7 @@ class UserController extends Controller
       
     try{
 
-       $user =  $this->userService->createUser($request->all());
+       $user =  $this->userService->createUser($request->validated());
         
         return redirect()->route('admin.users.create')->with('success', 'User ' .$user->username .  ' has been created successfully');
 

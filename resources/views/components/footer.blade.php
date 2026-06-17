@@ -1,6 +1,3 @@
-  
-  
-  <!----
   <footer class="footer-wrapper footer-default">
         <div class="widget-area">
             <div class="container">
@@ -9,72 +6,75 @@
                         <div class="widget footer-widget">
                             <div class="th-widget-about">
                                 <div class="about-logo"><a href="index.html"><img src="assets/img/logo-white.svg"
-                                            alt="></a></div>
-                                <p class="about-text"> is a luxury to the resilience, adaptability, Spacious
+                                            alt="Piller-html"></a></div>
+                                <p class="about-text">Pillar is a luxury to the resilience, adaptability, Spacious
                                     modern villa living room with centrally placed swimming pool blending indooroutdoor.
                                 </p>
-                                <div class="footer-info-wrap">
+                               <div class="footer-info-wrap">
                                     <div class="footer-info"><i class="fas fa-phone"></i>
-                                        <p class="info-box_link"><a href="tel:+00(123)456789012">+00 (123) 456 789
+                                        <p class="info-box_link"><a href="tel:{{$settings['phone'] ?? 'phone'}}">{{$settings['phone'] ?? 'phone'}}
                                                 012</a></p>
                                     </div>
                                     <div class="footer-info"><i class="fas fa-envelope"></i>
                                         <p class="info-box_link"><a
-                                                href="mailto:infomail123@domain.com">infomail123@domain.com</a></p>
+                                                href="mailto:{{$settings['email'] ?? 'email'}}">{{$settings['email'] ?? 'email'}}</a></p>
                                     </div>
                                     <div class="footer-info"><i class="fas fa-location-dot"></i>
-                                        <p class="info-box_link"><span>West 2nd lane, Inner circular road, New York
-                                                City</span></p>
+                                        <p class="info-box_link"><span>{{$settings['address'] ?? 'address'}}</span></p>
                                     </div>
                                 </div>
+                            
+                           
                             </div>
                         </div>
                     </div>
                     <div class="footer-all-widget-item">
                         <div class="footer-right-wrap">
                             <div class="footer-item-wrap">
-                                <div class="footer-item">
-                                    <div class="widget widget_nav_menu footer-widget">
-                                        <h3 class="widget_title">Featured Houses</h3>
-                                        <div class="menu-all-pages-container">
-                                            <ul class="menu">
-                                                <li><a href="service.html">#Villa</a></li>
-                                                <li><a href="service.html">#Commercial</a></li>
-                                                <li><a href="service.html">#Farm Houses</a></li>
-                                                <li><a href="service.html">#Apartments</a></li>
-                                                <li><a href="service.html">#Apartments</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="footer-item">
+
+<div class="footer-item">
                                     <div class="widget widget_nav_menu footer-widget">
                                         <h3 class="widget_title">Quick Links</h3>
                                         <div class="menu-all-pages-container">
                                             <ul class="menu">
-                                                <li><a href="service.html">Strategy Services</a></li>
-                                                <li><a href="service.html">Management</a></li>
-                                                <li><a href="service.html">Privacy & Policy</a></li>
-                                                <li><a href="service.html">Sitemap</a></li>
-                                                <li><a href="service.html">Term & Conditions</a></li>
+                                                <li><a href="{{route('home')}}">Home</a></li>
+                                                <li><a href="{{route('about')}}">About Us</a></li>
+                                                <li><a href="{{route('faqs')}}">FAQs</a></li>
+                                               
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+<div class="footer-item">
+                                    <div class="widget widget_nav_menu footer-widget">
+                                        <h3 class="widget_title">Support</h3>
+                                        <div class="menu-all-pages-container">
+                                            <ul class="menu">
+                                                <li><a href="{{route('contact')}}">Help Center</a></li>
+                                                <li><a href="{{route('faqs')}}">FAQs</a></li>
+                                              
+                                                <li><a href="#livesupport">Live Chat</a></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="footer-item">
                                     <div class="widget widget_nav_menu footer-widget">
-                                        <h3 class="widget_title">Support</h3>
+                                        <h3 class="widget_title">Legal</h3>
                                         <div class="menu-all-pages-container">
                                             <ul class="menu">
-                                                <li><a href="contact.html">Help Center</a></li>
-                                                <li><a href="service.html">FAQs</a></li>
-                                                <li><a href="contact.html">Contact Us</a></li>
-                                                <li><a href="contact.html">Ticket Support</a></li>
-                                                <li><a href="contact.html">Live Chat</a></li>
+                                                <li><a href="{{route('terms')}}">Terms</a></li>
+                                                <li><a href="{{route('privacy-policy')}}">Privacy Policy</a></li>
+                                               
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
+                                
+                                
                                 <div class="footer-item">
                                     <div class="widget widget_banner footer-widget">
                                         <h3 class="widget_title">Pillar Location</h3>
@@ -89,31 +89,11 @@
                                     <div class="footer-right-bottom-item__thumb help"><img
                                             src="assets/img/icon/footer-default-icon-1-1.png" alt="img"></div>
                                     <div class="footer-right-bottom-item__content">
-                                        <h4 class="box-title"><a href="contact.html">Need to Home buy or sell?</a></h4>
+                                        <h4 class="box-title"><a href="{{route('contact')}}">Need Home to rent ?</a></h4>
                                     </div>
                                 </div>
-                                <div class="footer-right-bottom-item scan">
-                                    <div class="footer-right-bottom-item__thumb"><img
-                                            src="assets/img/icon/footer-default-icon-1-2.png" alt="img"></div>
-                                    <div class="footer-right-bottom-item__content">
-                                        <p>Download on the</p>
-                                        <h4 class="box-title"><a href="https://www.apple.com/app-store/">App Store</a>
-                                        </h4>
-                                    </div>
-                                    <div class="footer-right-bottom-item__right"><img
-                                            src="assets/img/icon/footer-default-icon-1-2-scan.png" alt="img"></div>
-                                </div>
-                                <div class="footer-right-bottom-item scan">
-                                    <div class="footer-right-bottom-item__thumb"><img
-                                            src="assets/img/icon/footer-default-icon-1-3.png" alt="img"></div>
-                                    <div class="footer-right-bottom-item__content">
-                                        <p>GET IT ON</p>
-                                        <h4 class="box-title"><a href="https://play.google.com/store/apps">Google
-                                                Play</a></h4>
-                                    </div>
-                                    <div class="footer-right-bottom-item__right"><img
-                                            src="assets/img/icon/footer-default-icon-1-2-scan.png" alt="img"></div>
-                                </div>
+                                
+                                
                             </div>
                         </div>
                     </div>
@@ -132,22 +112,20 @@
                     <div class="col-auto">
                         <div class="footer-default-copy-right">
                             <p>Social Media:</p>
-                            <div class="th-social"><a href="https://www.facebook.com/"><i
-                                        class="fab fa-facebook-f"></i></a> <a href="https://www.twitter.com/"><i
-                                        class="fab fa-twitter"></i></a> <a href="https://www.linkedin.com/"><i
-                                        class="fab fa-linkedin-in"></i></a> <a href="https://www.whatsapp.com/"><i
+                                  <div class="th-social"><a href="{{$settings['facebook'] ?? 'facebook'}}"><i
+                                        class="fab fa-facebook-f"></i></a> <a href="{{$settings['twitter'] ?? 'twitter'}}"><i
+                                        class="fab fa-twitter"></i></a>  <a href="{{$settings['whatsapp'] ?? 'whatsapp'}}""><i
                                         class="fab fa-whatsapp"></i></a></div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
-    <div class="scroll-top"><svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
-                style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 307.919;">
-            </path>
-        </svg></div>
    
-
---->

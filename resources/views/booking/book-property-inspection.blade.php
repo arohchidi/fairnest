@@ -90,7 +90,7 @@
                         </p>
                     </div>
                     <div class="text-right">
-                        <p class="font-bold text-[#2D6A4F]">${{ number_format($property->rent_fee, 2) }}</p>
+                        <p class="font-bold text-[#2D6A4F]">{{App\Helper::formatNaira(number_format($property->rent_fee, 2))}}</p>
                         <p class="text-xs text-gray-400">Rent</p>
                     </div>
                 </div>
@@ -381,47 +381,24 @@
                                 <p class="text-sm text-gray-500" id="summaryPropertyLocation"></p>
                             </div>
                             
-                            <!-- Dates -->
-                            <div class="pb-3 border-b border-gray-100">
-                                <p class="text-xs text-gray-400 uppercase tracking-wide">Dates</p>
-                                <div class="flex justify-between mt-1">
-                                    <span class="text-sm text-gray-600">Date:</span>
-                                    <span class="text-sm font-medium text-gray-800" id="summaryCheckIn">—</span>
-                                </div>
-                              <!--  <div class="flex justify-between mt-1">
-                                    <span class="text-sm text-gray-600">Check-out:</span>
-                                    <span class="text-sm font-medium text-gray-800" id="summaryCheckOut">—</span>
-                                </div>
-                                <div class="flex justify-between mt-2 pt-2 border-t border-dashed border-gray-200">
-                                    <span class="text-sm text-gray-600">Total nights:</span>
-                                    <span class="text-sm font-semibold text-[#2D6A4F]" id="summaryNights">0</span>
-                                </div>-->
-                            </div>
                             
-                            <!-- Guests -->
-                            <div class="pb-3 border-b border-gray-100">
-                                <p class="text-xs text-gray-400 uppercase tracking-wide">Guests</p>
-                               
-                                <div class="flex justify-between mt-1" id="summaryRoommateRow" style="display: none;">
-                                    <span class="text-sm text-gray-600">Roommate:</span>
-                                    <span class="text-sm font-medium text-gray-800" id="summaryRoommate">—</span>
-                                </div>
-                            </div>
+                            
+                           
                             
                             <!-- Price Breakdown -->
                             <div class="space-y-2 pb-3 border-b border-gray-100">
                                 <p class="text-xs text-gray-400 uppercase tracking-wide">Price Breakdown</p>
                                 <div class="flex justify-between">
                                     <span class="text-sm text-gray-600" id="pricePerNightLabel">Rent</span>
-                                    <span class="text-sm text-gray-800" id="priceSubtotal">$0.00</span>
+                                    <span class="text-sm text-gray-800" id="priceSubtotal">{{App\Helper::formatNaira(number_format($property->rent_fee, 2))}}</span>
                                 </div>
                                 <div class="flex justify-between">
                                     <span class="text-sm text-gray-600">Caution fee</span>
-                                    <span class="text-sm text-gray-800">0.00</span>
+                                    <span class="text-sm text-gray-800">{{App\Helper::formatNaira(number_format($property->caution_fee, 2))}}</span>
                                 </div>
                                 <div class="flex justify-between">
                                     <span class="text-sm text-gray-600">Service fee</span>
-                                    <span class="text-sm text-gray-800">0.00</span>
+                                    <span class="text-sm text-gray-800">{{App\Helper::formatNaira(number_format($property->mgt_fee, 2))}}</span>
                                 </div>
                             </div>
                             

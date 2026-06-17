@@ -5,7 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Contracts\Services\BookingServiceInterface;
 
-use App\Services\Admin\BookingService;
+use App\Services\BookingService;
 
 
 class BookingServiceProvider extends ServiceProvider

@@ -64,7 +64,7 @@
                     </div>
                     <div class="flex-1">
                         <p class="text-sm text-gray-500">Property</p>
-                        <p class="font-semibold text-gray-800">{{ $booking['property_id'] }}</p>
+                        <p class="font-semibold text-gray-800">{{ $property['title'] }}</p>
                         <p class="text-sm text-gray-500 mt-0.5">
                             <i class="fas fa-map-marker-alt text-[#2D6A4F] text-xs mr-1"></i>
                             {{ ucfirst($property['address']) }}, {{ ucfirst($property['city']) }}, {{ucfirst($property['country'])}}
@@ -75,12 +75,17 @@
                 <!-- Guest Info -->
                 <div class="grid grid-cols-2 gap-4 pb-4 border-b border-gray-100">
                     <div>
-                        <p class="text-sm text-gray-500">Guest Name</p>
+                        <p class="text-sm text-gray-500">Name</p>
                         <p class="font-medium text-gray-800">{{ $booking['username']  }}</p>
                     </div>
                     <div>
                         <p class="text-sm text-gray-500">Email</p>
                         <p class="font-medium text-gray-800">{{ $booking['email']  }}</p>
+                    </div>
+
+                    <div>
+                        <p class="text-sm text-gray-500">Phone</p>
+                        <p class="font-medium text-gray-800">{{ $booking['phone']  }}</p>
                     </div>
                 </div>
                 
@@ -92,7 +97,7 @@
                             <i class="fas fa-calendar-alt text-[#2D6A4F] mr-2 text-sm"></i>
                             <span class="font-medium text-gray-800">{{ \Carbon\Carbon::parse($booking['booking_date'])->format('l, M d, Y') }}</span>
                         </div>
-                        <p class="text-xs text-gray-400 mt-1">After 3:00 PM</p>
+                        <p class="text-xs text-gray-400 mt-1"></p>
                     </div>
                 
                 </div>
@@ -162,10 +167,8 @@
         
         <!-- Action Buttons -->
         <div class="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4">
-            <a href="{{ url('bookings.my-bookings') }}" class="px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl font-medium transition text-center">
-                View My Bookings
-            </a>
-            <a href="{{ url('/') }}" class="px-6 py-3 bg-[#2D6A4F] hover:bg-[#1B4D3E] text-white rounded-xl font-medium transition text-center">
+           
+            <a href="{{ route('property.listings') }}" class="px-6 py-3 bg-[#2D6A4F] hover:bg-[#1B4D3E] text-white rounded-xl font-medium transition text-center">
                 Browse More Properties
             </a>
         </div>
@@ -173,7 +176,7 @@
         <!-- Need Help -->
         <div class="text-center mt-8">
             <p class="text-sm text-gray-500">
-                Need help? <a href="{{ url('/contact') }}" class="text-[#2D6A4F] hover:underline">Contact our support team</a>
+                Need help? <a href="{{ route('contact') }}" class="text-[#2D6A4F] hover:underline">Contact our support team</a>
             </p>
         </div>
     </div>
