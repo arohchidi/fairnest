@@ -34,7 +34,7 @@ class RegisterController extends Controller
     var_dump($request->all()); // Debug: Check incoming request data
         try {
             // Use all request input if a FormRequest is not available
-            $user = $this->authService->register($request->all());
+            $user = $this->authService->register($request->validated());
 
             // Auto login after registration
             $this->authService->login(

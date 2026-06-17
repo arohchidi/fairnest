@@ -25,6 +25,9 @@ return Application::configure(basePath: dirname(__DIR__))
     App\Providers\PropertyServiceProvider::class,
     App\Providers\UserServiceProvider::class,
     App\Providers\BookingServiceProvider::class,
+    App\Providers\FeedbackServiceProvider::class,
+    App\Providers\FaqServiceProvider::class,
+    App\Providers\SettingServiceProvider::class,
     
 ])
     ->withExceptions(function (Exceptions $exceptions): void {

@@ -10,19 +10,29 @@ use App\Http\Controllers\Admin\RegisterController;
 use App\Http\Controllers\Admin\ResetPasswordController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SimpleRegisterController;
+use App\Http\Controllers\Admin\FaqController;
+use App\Http\Controllers\Admin\SettingController;
+
 use App\Http\Controllers\Admin\PropertyController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\FeedbackController;
+
+
 use Illuminate\Support\Facades\Route;
 
 
 
 
 Route::get('about', [FrontController::class, 'about'])->name('about');
-Route::get('contact', [FrontController::class, 'contact'])->name('contact');
-
+Route::get('contact', [ContactController::class, 'index'])->name('contact');
+Route::post('contact', [FeedbackController::class, 'store'])->name('store.feedback');
+Route::get('terms', [FrontController::class, 'terms'])->name('terms');
+Route::get('privacy-policy', [FrontController::class, 'privacy'])->name('privacy-policy');
+Route::get('faqs', [FrontController::class, 'faqs'])->name('faqs');
 //property
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/property-listings', [FrontPropertyController::class, 'properties'])->name('property.listings');
@@ -100,7 +110,21 @@ Route::post('/register-test', function() {
         Route::patch('/users/edit/{id}',[UserController::class, 'updateUser'])->name('users.update');
         Route::patch('/users/toggle-status/{id}/toggle-status',[UserController::class, 'toggleStatus'])->name('users.toggle-status');
         Route::get('/users/delete-user/{id}',[UserController::class, 'delete'])->name('delete.user');
-        
+
+
+        //faqs
+        Route::get('/faq',[FaqController::class, 'index'])->name('faq.index');
+        Route::get('/faq/create',[FaqController::class, 'create'])->name('faq.create');
+         Route::post('/faq/create',[FaqController::class, 'store'])->name('faq.store');
+         Route::get('faq/edit/{id}', [FaqController::class, 'edit'])->name('faq.edit');
+          Route::put('faq/edit/{id}', [FaqController::class, 'updateFaq'])->name('faq.update');
+          Route::patch('faq/toggle-status/{id}', [FaqController::class, 'toggleStatus'])->name('faq.toggle-status');
+          Route::delete('faq/delete/{id}', [FaqController::class, 'destroy'])->name('faq.destroy');
+
+
+        //settings
+         Route::get('/settings',[SettingController::class, 'index'])->name('settings.index');
+         Route::put('/settings',[SettingController::class, 'store'])->name('settings.update');
     });
 
 });
