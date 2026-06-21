@@ -31,6 +31,8 @@ class SettingService implements SettingServiceInterface
        
       $settings =  $this->settingModel->firstOrCreate([]);
 
+  
+
        $settings->fill($data)->save();
        return  $settings->refresh();
        

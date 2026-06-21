@@ -37,7 +37,7 @@ class BookingController extends Controller
 
         
 
-        return view('booking.book-property-inspection', compact('property', 'title'));
+        return view('booking.property-inspection', compact('property', 'title'));
     }
 
     public function storeBooking(BookingRequest $request):HttpFoundationRedirectResponse
@@ -54,7 +54,7 @@ class BookingController extends Controller
 
        return redirect()->route('booking.success');
       } catch(\Exception $e){
-        Log::info($e->getMessage());
+        Log::error($e->getMessage());
       return redirect()->back()->with('error', 'Whoops, something went wrong.Could not book this property for inspection');
       }
 
@@ -74,7 +74,7 @@ class BookingController extends Controller
     if (!$booking) {
         return redirect()->route('bookings.create');
     }
-    
+   
     return view('booking.success', compact('booking', 'title', 'property'));
 }
 

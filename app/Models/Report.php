@@ -8,10 +8,19 @@ class Report extends Model
 {
     //
     protected $fillable = [
-        'username',
+        'email',
+        'name',
         'property_id',
-        'report_reason',
-        'report_status',
+        'title',
+        'photo',
+        'description',
+        'category',
+        'anonymous',
+        'status',
+    ];
+
+    protected $casts = [
+        'photo' =>  'array',
     ];
 
 

@@ -22,9 +22,53 @@
             </div>
         </div>
     </div>
-    
+
+
+   
     <!-- Statistics Cards -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Total Users -->
+        <div class="bg-white rounded-2xl shadow-sm p-6 hover:shadow-lg transition-all duration-300 border border-gray-100">
+            <div class="flex justify-between items-start">
+                <div>
+                    <p class="text-gray-500 text-sm font-medium mb-1">Total Users</p>
+                    <p class="text-3xl font-bold text-gray-800">{{ number_format($statistics['total_users']) }}</p>
+                    <p class="text-xs text-gray-400 mt-2">Registered members</p>
+                </div>
+                <div class="w-12 h-12 bg-[#2D6A4F]/10 rounded-xl flex items-center justify-center">
+                    <i class="fas fa-users text-2xl text-[#2D6A4F]"></i>
+                </div>
+            </div>
+        </div>
+
+         <!-- Total Users -->
+        <div class="bg-white rounded-2xl shadow-sm p-6 hover:shadow-lg transition-all duration-300 border border-gray-100">
+            <div class="flex justify-between items-start">
+                <div>
+                    <p class="text-gray-500 text-sm font-medium mb-1">Active Users</p>
+                    <p class="text-3xl font-bold text-gray-800">{{ number_format($statistics['active_users']) }}</p>
+                    <p class="text-xs text-gray-400 mt-2">Active members</p>
+                </div>
+                <div class="w-12 h-12 bg-[#2D6A4F]/10 rounded-xl flex items-center justify-center">
+                    <i class="fas fa-users text-2xl text-[#2D6A4F]"></i>
+                </div>
+            </div>
+        </div>
+
+         <!-- Total Users -->
+        <div class="bg-white rounded-2xl shadow-sm p-6 hover:shadow-lg transition-all duration-300 border border-gray-100">
+            <div class="flex justify-between items-start">
+                <div>
+                    <p class="text-gray-500 text-sm font-medium mb-1">Inactive Users</p>
+                    <p class="text-3xl font-bold text-gray-800">{{ number_format($statistics['in_active_users']) }}</p>
+                    <p class="text-xs text-gray-400 mt-2">Banned members</p>
+                </div>
+                <div class="w-12 h-12 bg-[#2D6A4F]/10 rounded-xl flex items-center justify-center">
+                    <i class="fas fa-users text-2xl text-[#2D6A4F]"></i>
+                </div>
+            </div>
+        </div>
+    
         <!-- Total Properties -->
         <div class="bg-white rounded-2xl shadow-sm p-6 hover:shadow-lg transition-all duration-300 border border-gray-100">
             <div class="flex justify-between items-start">
@@ -46,7 +90,7 @@
                     <p class="text-gray-500 text-sm font-medium mb-1">Active Bookings</p>
                     <p class="text-3xl font-bold text-gray-800">{{ number_format($statistics['active_bookings']) }}</p>
                     <p class="text-xs text-green-600 mt-2">
-                        <i class="fas fa-arrow-up mr-1"></i> {{ $statistics['occupancy_rate'] }}% occupancy
+                        <i class="fas fa-arrow-up mr-1"></i> 
                     </p>
                 </div>
                 <div class="w-12 h-12 bg-[#2D6A4F]/10 rounded-xl flex items-center justify-center">
@@ -55,19 +99,7 @@
             </div>
         </div>
         
-        <!-- Total Users -->
-        <div class="bg-white rounded-2xl shadow-sm p-6 hover:shadow-lg transition-all duration-300 border border-gray-100">
-            <div class="flex justify-between items-start">
-                <div>
-                    <p class="text-gray-500 text-sm font-medium mb-1">Total Users</p>
-                    <p class="text-3xl font-bold text-gray-800">{{ number_format($statistics['total_users']) }}</p>
-                    <p class="text-xs text-gray-400 mt-2">Registered members</p>
-                </div>
-                <div class="w-12 h-12 bg-[#2D6A4F]/10 rounded-xl flex items-center justify-center">
-                    <i class="fas fa-users text-2xl text-[#2D6A4F]"></i>
-                </div>
-            </div>
-        </div>
+       
         
         <!-- Revenue -->
         <div class="bg-white rounded-2xl shadow-sm p-6 hover:shadow-lg transition-all duration-300 border border-gray-100">
@@ -186,9 +218,9 @@
                                 <p class="font-medium text-gray-800">{{ $booking['guest_name'] }}</p>
                                 <p class="text-sm text-gray-500">{{ $booking['property_title'] }}</p>
                                 <p class="text-xs text-gray-400 mt-1">
-                                    <i class="far fa-calendar-alt mr-1"></i> {{ $booking['check_in'] }} - {{ $booking['check_out'] }}
+                                    <i class="far fa-calendar-alt mr-1"></i> {{ $booking['booking_date'] }}
                                     <span class="mx-1">•</span>
-                                    {{ $booking['nights'] }} nights
+                                   
                                 </p>
                             </div>
                         </div>
@@ -196,7 +228,7 @@
                             <span class="inline-block px-2 py-1 text-xs rounded-full bg-{{ $booking['status_color'] }}-100 text-{{ $booking['status_color'] }}-700">
                                 {{ ucfirst($booking['status']) }}
                             </span>
-                            <p class="font-semibold text-gray-800 mt-1">${{ number_format($booking['total_price'], 2) }}</p>
+                            
                         </div>
                     </div>
                 </div>
@@ -249,8 +281,8 @@
                             </div>
                         </div>
                         <div class="text-right">
-                            <p class="font-bold text-[#2D6A4F]">${{ number_format($property['price_per_night'], 2) }}</p>
-                            <p class="text-xs text-gray-500">/ night</p>
+                            <p class="font-bold text-[#2D6A4F]">{{ App\Helper::formatNaira(number_format($property['rent'], 2)) }}</p>
+                            <p class="text-xs text-gray-500">/basic rent</p>
                             <p class="text-xs text-gray-400 mt-1">{{ $property['total_bookings'] }} bookings</p>
                         </div>
                     </div>

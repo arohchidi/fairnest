@@ -26,14 +26,14 @@ public function __construct(Booking $model){
         'phone' => $data['phone'],
         'property_id' => $data['property_id'],
         'booking_date' => $data['booking_date'],
-        'needs_roommate' => $data['needs_roommate'],
-        'roommate_gender' => $data['roommate_gender'],
-        'roommate_age' => $data['roommate_age'],
-        'roommate_level' => $data['roommate_level'],
-        'state_of_origin' => $data['state_of_origin'],
-        'religion' => $data['religion'],
-        'roommate_note' => $data['roommate_note'],
-        'special_request' => $data['special_request'],
+        'needs_roommate' => $data['needs_roommate'] ?? null,
+        'roommate_gender' => $data['roommate_gender'] ?? null,
+        'roommate_age' => $data['roommate_age'] ?? null,
+        'roommate_level' => $data['roommate_level'] ?? null,
+        'state_of_origin' => $data['state_of_origin'] ?? null,
+        'religion' => $data['religion'] ?? null,
+        'roommate_note' => $data['roommate_note'] ?? null,
+        'special_request' => $data['special_request'] ?? null,
        ]);
 
        return $book;

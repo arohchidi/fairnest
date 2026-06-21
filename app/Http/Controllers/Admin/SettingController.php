@@ -38,12 +38,26 @@ class SettingController extends Controller
        $setting = $this->settingService->store($request->validated());
       
 
-       return redirect()->route('admin.settings.index')->with('success',ucwords($request['tab']).'Settings have been Updated');
+       return redirect()->back()->with('success',ucwords($request['tab']).' Settings have been Updated');
     } catch(\Exception $e){
         Log::error($e->getMessage());
-          return redirect()->route('admin.settings.index')->with('error','Whoops,something went wrong');
+          return redirect()->back()->with('error','Whoops,something went wrong');
     }
 
+    }
+
+    public function terms():View
+    {
+       $settings = $this->settingService->settings();
+       return view('admin.pages.terms',compact('settings'));
+       
+    }
+
+     public function privacyPolicy():View
+    {
+       $settings = $this->settingService->settings();
+       return view('admin.pages.privacy-policy',compact('settings'));
+       
     }
     
 }

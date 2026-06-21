@@ -79,6 +79,12 @@ public function rules(): array
            
            
         ],
+        'terms' => [
+            'terms' => ['nullable']
+        ],
+        'privacy' => [
+            'privacy'  => ['nullable']
+        ],
 
 
         default => [],
