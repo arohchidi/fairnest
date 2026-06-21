@@ -1,153 +1,60 @@
-  
-  
-  <!----
-  <footer class="footer-wrapper footer-default">
-        <div class="widget-area">
-            <div class="container">
-                <div class="footer-all-widget-wrapper">
-                    <div class="footer-all-widget-item">
-                        <div class="widget footer-widget">
-                            <div class="th-widget-about">
-                                <div class="about-logo"><a href="index.html"><img src="assets/img/logo-white.svg"
-                                            alt="></a></div>
-                                <p class="about-text"> is a luxury to the resilience, adaptability, Spacious
-                                    modern villa living room with centrally placed swimming pool blending indooroutdoor.
-                                </p>
-                                <div class="footer-info-wrap">
-                                    <div class="footer-info"><i class="fas fa-phone"></i>
-                                        <p class="info-box_link"><a href="tel:+00(123)456789012">+00 (123) 456 789
-                                                012</a></p>
-                                    </div>
-                                    <div class="footer-info"><i class="fas fa-envelope"></i>
-                                        <p class="info-box_link"><a
-                                                href="mailto:infomail123@domain.com">infomail123@domain.com</a></p>
-                                    </div>
-                                    <div class="footer-info"><i class="fas fa-location-dot"></i>
-                                        <p class="info-box_link"><span>West 2nd lane, Inner circular road, New York
-                                                City</span></p>
-                                    </div>
-                                </div>
-                            </div>
+  <!-- Footer -->
+    <footer class="bg-gray-900 text-white mt-16">
+        <div class="max-w-7xl mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 bg-[#2D6A4F] rounded-lg flex items-center justify-center">
+                            <i class="fas fa-building text-white text-sm"></i>
                         </div>
+                        <span class="font-bold text-xl">{{ config('app.name') }}</span>
                     </div>
-                    <div class="footer-all-widget-item">
-                        <div class="footer-right-wrap">
-                            <div class="footer-item-wrap">
-                                <div class="footer-item">
-                                    <div class="widget widget_nav_menu footer-widget">
-                                        <h3 class="widget_title">Featured Houses</h3>
-                                        <div class="menu-all-pages-container">
-                                            <ul class="menu">
-                                                <li><a href="service.html">#Villa</a></li>
-                                                <li><a href="service.html">#Commercial</a></li>
-                                                <li><a href="service.html">#Farm Houses</a></li>
-                                                <li><a href="service.html">#Apartments</a></li>
-                                                <li><a href="service.html">#Apartments</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="footer-item">
-                                    <div class="widget widget_nav_menu footer-widget">
-                                        <h3 class="widget_title">Quick Links</h3>
-                                        <div class="menu-all-pages-container">
-                                            <ul class="menu">
-                                                <li><a href="service.html">Strategy Services</a></li>
-                                                <li><a href="service.html">Management</a></li>
-                                                <li><a href="service.html">Privacy & Policy</a></li>
-                                                <li><a href="service.html">Sitemap</a></li>
-                                                <li><a href="service.html">Term & Conditions</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="footer-item">
-                                    <div class="widget widget_nav_menu footer-widget">
-                                        <h3 class="widget_title">Support</h3>
-                                        <div class="menu-all-pages-container">
-                                            <ul class="menu">
-                                                <li><a href="contact.html">Help Center</a></li>
-                                                <li><a href="service.html">FAQs</a></li>
-                                                <li><a href="contact.html">Contact Us</a></li>
-                                                <li><a href="contact.html">Ticket Support</a></li>
-                                                <li><a href="contact.html">Live Chat</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="footer-item">
-                                    <div class="widget widget_banner footer-widget">
-                                        <h3 class="widget_title">Pillar Location</h3>
-                                        <div class="widget-map"><iframe
-                                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3644.7310056272386!2d89.2286059153658!3d24.00527418490799!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39fe9b97badc6151%3A0x30b048c9fb2129bc!2sAngfuztheme!5e0!3m2!1sen!2sbd!4v1658812932163!5m2!1sen!2sbd"></iframe>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="footer-right-bottom-wrap">
-                                <div class="footer-right-bottom-item">
-                                    <div class="footer-right-bottom-item__thumb help"><img
-                                            src="assets/img/icon/footer-default-icon-1-1.png" alt="img"></div>
-                                    <div class="footer-right-bottom-item__content">
-                                        <h4 class="box-title"><a href="contact.html">Need to Home buy or sell?</a></h4>
-                                    </div>
-                                </div>
-                                <div class="footer-right-bottom-item scan">
-                                    <div class="footer-right-bottom-item__thumb"><img
-                                            src="assets/img/icon/footer-default-icon-1-2.png" alt="img"></div>
-                                    <div class="footer-right-bottom-item__content">
-                                        <p>Download on the</p>
-                                        <h4 class="box-title"><a href="https://www.apple.com/app-store/">App Store</a>
-                                        </h4>
-                                    </div>
-                                    <div class="footer-right-bottom-item__right"><img
-                                            src="assets/img/icon/footer-default-icon-1-2-scan.png" alt="img"></div>
-                                </div>
-                                <div class="footer-right-bottom-item scan">
-                                    <div class="footer-right-bottom-item__thumb"><img
-                                            src="assets/img/icon/footer-default-icon-1-3.png" alt="img"></div>
-                                    <div class="footer-right-bottom-item__content">
-                                        <p>GET IT ON</p>
-                                        <h4 class="box-title"><a href="https://play.google.com/store/apps">Google
-                                                Play</a></h4>
-                                    </div>
-                                    <div class="footer-right-bottom-item__right"><img
-                                            src="assets/img/icon/footer-default-icon-1-2-scan.png" alt="img"></div>
-                                </div>
-                            </div>
-                        </div>
+                    <p class="text-gray-400 text-sm">Find your perfect home away from home. Quality properties at competitive prices.</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="{{ route('property.listings') }}" class="hover:text-white transition">Browse Properties</a></li>
+                        <li><a href="{{ route('about') }}" class="hover:text-white transition">About Us</a></li>
+                        <li><a href="{{ route('contact') }}" class="hover:text-white transition">Contact</a></li>
+                        <li><a href="{{route('faqs')}}" class="hover:text-white transition">FAQs</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Legal</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                       
+                        <li><a href="{{route('privacy-policy')}}" class="hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="{{route('terms')}}" class="hover:text-white transition">Terms & Condition</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Contact Us</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-envelope w-4"></i>
+                            <span>{{$settings['email'] ?? ''}}</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-phone w-4"></i>
+                            <span>{{$settings['phone'] ?? ''}}</span>
+                        </li>
+                    </ul>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="{{$settings['facebook_url'] ?? ''}}" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="{{$settings['twitter_url'] ?? ''}}" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                        <a href="{{$settings['instagram_url'] ?? ''}}" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                        <a href="{{$settings['linkedin_url'] ?? ''}}" class="text-gray-400 hover:text-white transition"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="copyright-wrap">
-            <div class="footer-bottom-top-shape animation-infinite"
-                data-bg-src="assets/img/icon/footer-bottom-top-shape.png"></div>
-            <div class="container">
-                <div class="row gy-3 justify-content-lg-between justify-content-center align-items-center">
-                    <div class="col-lg-7">
-                        <p class="copyright-text">Copyright <i class="fal fa-copyright"></i> 2025 <a
-                                href="index.html">Piller</a>. All Rights Reserved.</p>
-                    </div>
-                    <div class="col-auto">
-                        <div class="footer-default-copy-right">
-                            <p>Social Media:</p>
-                            <div class="th-social"><a href="https://www.facebook.com/"><i
-                                        class="fab fa-facebook-f"></i></a> <a href="https://www.twitter.com/"><i
-                                        class="fab fa-twitter"></i></a> <a href="https://www.linkedin.com/"><i
-                                        class="fab fa-linkedin-in"></i></a> <a href="https://www.whatsapp.com/"><i
-                                        class="fab fa-whatsapp"></i></a></div>
-                        </div>
-                    </div>
-                </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
+                <p>&copy; {{ date('Y') }} {{ config('app.name') }}. All rights reserved.</p>
             </div>
         </div>
     </footer>
-    <div class="scroll-top"><svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
-                style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 307.919;">
-            </path>
-        </svg></div>
-   
-
---->
+    

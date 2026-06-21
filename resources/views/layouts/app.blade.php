@@ -15,7 +15,8 @@
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <!-- Add this to your layout head or page -->
+
     <style>
         * {
             font-family: 'Inter', sans-serif;
@@ -23,11 +24,12 @@
     </style>
     
     @stack('styles')
+   
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-50 pt-16">
     
     <!-- Navigation -->
-    <nav class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
+   <nav class="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm border-b border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <!-- Logo -->
@@ -92,70 +94,22 @@
     
     <!-- Main Content -->
     <main>
+    @if(session('success'))
+                <div class="mb-4 p-3 bg-green-100 border border-green-400 text-green-700 rounded">
+                    {{ session('success') }}
+                </div>
+            @endif
+            
+            @if(session('error'))
+                <div class="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
+                    {{ session('error') }}
+                </div>
+            @endif
         @yield('content')
+        
     </main>
     
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white mt-16">
-        <div class="max-w-7xl mx-auto px-4 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <div class="flex items-center space-x-2 mb-4">
-                        <div class="w-8 h-8 bg-[#2D6A4F] rounded-lg flex items-center justify-center">
-                            <i class="fas fa-building text-white text-sm"></i>
-                        </div>
-                        <span class="font-bold text-xl">{{ config('app.name') }}</span>
-                    </div>
-                    <p class="text-gray-400 text-sm">Find your perfect home away from home. Quality properties at competitive prices.</p>
-                </div>
-                
-                <div>
-                    <h4 class="font-semibold mb-4">Quick Links</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="{{ url('/properties') }}" class="hover:text-white transition">Browse Properties</a></li>
-                        <li><a href="{{ url('/about') }}" class="hover:text-white transition">About Us</a></li>
-                        <li><a href="{{ url('/contact') }}" class="hover:text-white transition">Contact</a></li>
-                        <li><a href="#" class="hover:text-white transition">FAQs</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="font-semibold mb-4">Support</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="#" class="hover:text-white transition">Help Center</a></li>
-                        <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
-                        <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
-                        <li><a href="#" class="hover:text-white transition">Cancellation Policy</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="font-semibold mb-4">Contact Us</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li class="flex items-center space-x-2">
-                            <i class="fas fa-envelope w-4"></i>
-                            <span>support@example.com</span>
-                        </li>
-                        <li class="flex items-center space-x-2">
-                            <i class="fas fa-phone w-4"></i>
-                            <span>+1 234 567 8900</span>
-                        </li>
-                    </ul>
-                    <div class="flex space-x-4 mt-4">
-                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
-                <p>&copy; {{ date('Y') }} {{ config('app.name') }}. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-    
+  
     <!-- Alpine.js for dropdown -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     

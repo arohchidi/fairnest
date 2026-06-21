@@ -19,18 +19,18 @@ class BookingRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required','email', 'confirmed'],
+            'email' => ['required','email'],
             'phone' => ['required', 'string'],
-            'property_id' => ['required', 'string'],
-            'booking_date' => ['required', 'string'],
-            'needs_roommate' => ['required', 'string'],
-            'roommate_gender' => ['sometimes', 'string'],
-            'roommate_age' => ['sometimes', 'integer'],
-            'roommate_level' => ['sometimes', 'string'],
-            'state_of_origin' => ['sometimes', 'string'],
-            'religion' => ['sometimes', 'string'],
-            'roommate_note' => ['sometimes', 'string'],
-            'special_request' => ['sometimes', 'string'],
+            'property_id' => ['required'],
+            'booking_date' => ['required'],
+            'needs_roommate' => ['nullable', 'string'],
+            'roommate_gender' => ['nullable', 'string'],
+            'roommate_age' => ['nullable', 'integer'],
+            'roommate_level' => ['nullable', 'string'],
+            'state_of_origin' => ['nullable', 'string'],
+            'religion' => ['nullable', 'string'],
+            'roommate_note' => ['nullable', 'string'],
+            'special_request' => ['nullable', 'string'],
         ];
     }
 
@@ -41,7 +41,7 @@ class BookingRequest extends FormRequest
             'email.required' => 'Email address is required',
             'email.email' => 'Please enter a valid email address',
             'phone' => 'Phone number is required',
-            'email.confirmed' => 'Email needs to be confirmed',
+            
         ];
     }
 }

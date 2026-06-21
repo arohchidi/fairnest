@@ -7,6 +7,8 @@ interface BookingServiceInterface
 {
     public function storeBooking(array $data);
 
+   
+
 
 }
   

@@ -5,7 +5,8 @@ namespace App\Services\Admin;
 use App\Contracts\Services\PropertyServiceInterface;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\Models\Property;
-
+use App\Models\Review;
+use Illuminate\Database\Eloquent\Collection;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -20,10 +21,12 @@ class PropertyService implements PropertyServiceInterface
 {
 
 protected $propertyModel;
+protected $reviewModel;
     
-    public function __construct(Property $model)
+    public function __construct(Property $model, Review $review)
     {
         $this->propertyModel = $model;
+        $this->reviewModel = $review;
     }
 
 
@@ -68,7 +71,7 @@ private function processImages($images): array
 
     foreach ($images as $image) {
        
-        $imagePaths[] = $image->store('property_images', 'public');
+       // $imagePaths[] = $image->store('property_images', 'public');
 
         $path = $image->store('property_images', 'public');
         $imagePaths[] = str_replace('\\', '/', $path);
@@ -197,20 +200,36 @@ private function processImages($images): array
 
     
         $property = $this->propertyModel->find($id);
+        
+
         if(!$property){
              throw new \Exception('Cannot find a property with the id'.$id);
         }
-        $similarProperties =  $this->propertyModel->where('title', 'like', "%$property->title%")
-            ->where('id', '!=', $id)
-              ->orWhere('type_of_house', 'like', "%$property->type_of_house%")
-              ->orWhere('city', 'like', "%$property->city%")->limit(3)->get();
-        
+
+       
+        $similarProperties = $this->propertyModel
+        ->where('id', '!=', $id)
+        ->where(function ($query) use ($property) {
+            $query->where('type_of_house', $property->type_of_house)
+                  ->orWhere('city', $property->city);
+        })
+        ->limit(3)
+        ->get();
+
+        $ratings =  $this->reviewModel->where('property_id', $id)->where('status','approved')->pluck('ratings');
+        $reviews = $property->reviews()->where('status','approved')
+    ->latest()
+    ->take(5)
+    ->get();
+   
 
      
             return  [
              'property' => $property,
-             'similarProperties' => $similarProperties
-            ];
+             'similarProperties' => $similarProperties,
+             'ratings' => $ratings,
+             'reviews' => $reviews,
+                         ];
             
             
     }
@@ -290,5 +309,24 @@ $imagePaths[] = str_replace('\\', '/', $path);
     });
        
     }
+
+#[Override]
+	public function featuredProperties(): Collection
+    {
+     $featuredProperties = $this->propertyModel->where('featured',1)->withAvg('reviews', 'ratings')->latest()->limit(8)->get();  
+    
+    
+     return  $featuredProperties;  
+
+    }
+
+    public function latestProperties(): Collection
+    {
+     $latestProperties = $this->propertyModel->withAvg('reviews', 'ratings')->latest()->limit(8)->get();  
+    
+     return $latestProperties;  
+
+    }
+
 
 }

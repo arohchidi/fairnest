@@ -51,7 +51,7 @@ class PropertyController extends Controller
 
         try {
             
-            $property = $this->propertyService->createProperty($request->all());
+            $property = $this->propertyService->createProperty($request->validated());
             Log::info('Property created successfully', ['property_id' => $property->id]);
             return redirect()->route('admin.properties.index')
                 ->with('success', 'Property created successfully!');
@@ -93,7 +93,7 @@ class PropertyController extends Controller
 
     try{
 
-    $property = $this->propertyService->updateProperty($id, $request->all());
+    $property = $this->propertyService->updateProperty($id, $request->validated());
 
     return redirect()->route('admin.properties.index')->with('success', 'Property'.$property->title . 'has been edited successfully');
 
