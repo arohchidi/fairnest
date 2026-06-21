@@ -4,6 +4,64 @@
 @section('header-title', 'Terms & Conditions')
 @section('header-description', 'Manage the terms and conditions of your platform')
 
+@push('styles')
+<!-- Summernote CSS -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+<style>
+    .note-editor {
+        border-radius: 0.5rem !important;
+        border-color: #d1d5db !important;
+        box-shadow: none !important;
+    }
+    .note-editor:focus-within {
+        border-color: #2D6A4F !important;
+        box-shadow: 0 0 0 2px rgba(45, 106, 79, 0.2) !important;
+    }
+    .note-editor .note-toolbar {
+        background: #f9fafb !important;
+        border-bottom: 1px solid #e5e7eb !important;
+        border-radius: 0.5rem 0.5rem 0 0 !important;
+        padding: 8px 12px !important;
+    }
+    .note-editor .note-toolbar .note-btn-group .note-btn {
+        background: transparent !important;
+        border: 1px solid transparent !important;
+        border-radius: 4px !important;
+        padding: 4px 8px !important;
+    }
+    .note-editor .note-toolbar .note-btn-group .note-btn:hover {
+        background: #e5e7eb !important;
+        border-color: #d1d5db !important;
+    }
+    .note-editor .note-toolbar .note-btn-group .note-btn.active {
+        background: #2D6A4F !important;
+        color: white !important;
+    }
+    .note-editor .note-editable {
+        min-height: 400px !important;
+        padding: 20px !important;
+        font-size: 16px !important;
+        line-height: 1.7 !important;
+    }
+    .note-editor .note-editable:focus {
+        outline: none !important;
+    }
+    .note-editor .note-statusbar {
+        background: #f9fafb !important;
+        border-top: 1px solid #e5e7eb !important;
+        border-radius: 0 0 0.5rem 0.5rem !important;
+    }
+    .prose h1 { font-size: 2em; margin-top: 1.5em; margin-bottom: 0.5em; }
+    .prose h2 { font-size: 1.5em; margin-top: 1.25em; margin-bottom: 0.5em; }
+    .prose h3 { font-size: 1.25em; margin-top: 1em; margin-bottom: 0.5em; }
+    .prose p { margin-bottom: 1em; line-height: 1.7; }
+    .prose ul, .prose ol { margin: 1em 0; padding-left: 1.5em; }
+    .prose li { margin-bottom: 0.5em; }
+</style>
+@endpush
+
 @section('content')
 <div class="max-w-5xl mx-auto">
     
@@ -29,7 +87,7 @@
                     </div>
                     <div>
                         <h3 class="text-lg font-semibold text-gray-800">Terms & Conditions</h3>
-                        <p class="text-sm text-gray-500 mt-0.5">Last updated: <span id="lastUpdated">{{ $terms->updated_at->format('F d, Y H:i A') ?? 'Never' }}</span></p>
+                        <p class="text-sm text-gray-500 mt-0.5">Last updated: <span id="lastUpdated">{{ $settings->updated_at->format('F d, Y H:i A') ?? 'Never' }}</span></p>
                     </div>
                 </div>
                 <div class="flex items-center space-x-3">
@@ -42,16 +100,16 @@
             </div>
         </div>
         
-        <form method="POST" action="{{ route('admin.pages.terms.update') }}" class="p-6">
+        <form method="POST" action="{{ route('admin.settings.update') }}" class="p-6">
             @csrf
             @method('PUT')
-            
+            <input type="hidden" name="tab" value="terms">
             <!-- Version -->
             <div class="mb-4">
                 <label class="block text-sm font-medium text-gray-700 mb-2">
                     Version <span class="text-red-500">*</span>
                 </label>
-                <input type="text" name="version" value="{{ old('version', $terms->version ?? '1.0') }}"
+                <input type="text" name="version" value="{{ old('version', $settings->version ?? '1.0') }}"
                        class="w-full md:w-64 px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2D6A4F]"
                        placeholder="e.g., 1.0, 2.1">
                 @error('version')
@@ -64,7 +122,7 @@
                 <label class="block text-sm font-medium text-gray-700 mb-2">
                     Page Title <span class="text-red-500">*</span>
                 </label>
-                <input type="text" name="title" value="{{ old('title', $terms->title ?? 'Terms and Conditions') }}"
+                <input type="text"  value="{{ ('Terms and Conditions') }}"
                        class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2D6A4F]">
                 @error('title')
                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -76,8 +134,8 @@
                 <label class="block text-sm font-medium text-gray-700 mb-2">
                     Content <span class="text-red-500">*</span>
                 </label>
-                <textarea name="content" id="termsEditor" rows="20"
-                          class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2D6A4F]">{{ old('content', $terms->content ?? '') }}</textarea>
+                <textarea name="terms" id="termsEditor" rows="20"
+                          class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2D6A4F]">{{ old('terms', $settings->terms ?? '') }}</textarea>
                 @error('content')
                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                 @enderror
@@ -116,85 +174,19 @@
     </div>
 </div>
 
-@push('styles')
-<style>
-    .tox-tinymce {
-        border-radius: 0.5rem !important;
-        border-color: #d1d5db !important;
-    }
-    .tox-tinymce:focus-within {
-        border-color: #2D6A4F !important;
-        box-shadow: 0 0 0 2px rgba(45, 106, 79, 0.2) !important;
-    }
-    .prose h1 { font-size: 2em; margin-top: 1.5em; margin-bottom: 0.5em; }
-    .prose h2 { font-size: 1.5em; margin-top: 1.25em; margin-bottom: 0.5em; }
-    .prose h3 { font-size: 1.25em; margin-top: 1em; margin-bottom: 0.5em; }
-    .prose p { margin-bottom: 1em; line-height: 1.7; }
-    .prose ul, .prose ol { margin: 1em 0; padding-left: 1.5em; }
-    .prose li { margin-bottom: 0.5em; }
-</style>
-@endpush
-
 @push('scripts')
-<!-- TinyMCE CDN -->
-<script src="https://cdn.tiny.cloud/1/YOUR_API_KEY/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 
 <script>
-    // Initialize TinyMCE
-    tinymce.init({
-        selector: '#termsEditor',
-        height: 500,
-        menubar: true,
-        plugins: [
-            'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
-            'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
-            'insertdatetime', 'media', 'table', 'help', 'wordcount'
-        ],
-        toolbar: 'undo redo | blocks | ' +
-            'bold italic backcolor | alignleft aligncenter ' +
-            'alignright alignjustify | bullist numlist outdent indent | ' +
-            'removeformat | help | fullscreen',
-        content_style: 'body { font-family: Inter, system-ui, sans-serif; font-size: 16px; line-height: 1.7; }',
-        branding: false,
-        promotion: false,
-        skin: 'oxide',
-        content_css: 'default',
-        setup: function(editor) {
-            editor.on('change', function() {
-                tinymce.triggerSave();
-            });
-        }
+$(document).ready(function() {
+    $('#termsEditor').summernote({
+        height: 300
     });
-    
-    // Preview functionality
-    function previewContent() {
-        const content = tinymce.get('termsEditor').getContent();
-        document.getElementById('previewContent').innerHTML = content;
-        document.getElementById('previewModal').classList.remove('hidden');
-        document.getElementById('previewModal').classList.add('flex');
-        document.body.style.overflow = 'hidden';
-    }
-    
-    function closePreview() {
-        document.getElementById('previewModal').classList.add('hidden');
-        document.getElementById('previewModal').classList.remove('flex');
-        document.body.style.overflow = '';
-    }
-    
-    // Close modal on outside click
-    document.getElementById('previewModal').addEventListener('click', function(e) {
-        if (e.target === this) {
-            closePreview();
-        }
-    });
-    
-    // Save on Ctrl+S
-    document.addEventListener('keydown', function(e) {
-        if ((e.ctrlKey || e.metaKey) && e.key === 's') {
-            e.preventDefault();
-            document.querySelector('form').submit();
-        }
-    });
+});
 </script>
+
+
 @endpush
 @endsection

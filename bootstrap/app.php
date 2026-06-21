@@ -1,5 +1,6 @@
 <?php
 
+use App\Providers\ReviewServiceProvider;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -28,7 +29,12 @@ return Application::configure(basePath: dirname(__DIR__))
     App\Providers\FeedbackServiceProvider::class,
     App\Providers\FaqServiceProvider::class,
     App\Providers\SettingServiceProvider::class,
-    
+    App\Providers\AdminBookingServiceProvider::class,
+    App\Providers\ViewServiceProvider::class,
+    App\Providers\ReportServiceProvider::class,
+    App\Providers\ReviewServiceProvider::class,
+    App\Providers\AdminReportServiceProvider::class,
+    App\Providers\AdminReviewServiceProvider::class,
 ])
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(
