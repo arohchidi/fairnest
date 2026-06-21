@@ -51,7 +51,7 @@ class PropertyController extends Controller
 
         try {
             
-            $property = $this->propertyService->createProperty($request->all());
+            $property = $this->propertyService->createProperty($request->validated());
             Log::info('Property created successfully', ['property_id' => $property->id]);
             return redirect()->route('admin.properties.index')
                 ->with('success', 'Property created successfully!');
@@ -67,7 +67,10 @@ class PropertyController extends Controller
 
     public function showPropertyById($id):View{
      $id = $id;
-     $property = $this->propertyService->getPropertyById($id);
+     $data = $this->propertyService->getPropertyById($id);
+     
+     $property = $data['property'];
+     
     
     return view('admin.properties.show', compact('property'));
     }
@@ -75,7 +78,9 @@ class PropertyController extends Controller
 
     public function edit($id):View{
     $id = $id;
-    $property = $this->propertyService->getPropertyById($id);
+    $data = $this->propertyService->getPropertyById($id);
+     
+     $property = $data['property'];
     
     return view('admin.properties.edit', compact('property'));
     }
@@ -88,7 +93,7 @@ class PropertyController extends Controller
 
     try{
 
-    $property = $this->propertyService->updateProperty($id, $request->all());
+    $property = $this->propertyService->updateProperty($id, $request->validated());
 
     return redirect()->route('admin.properties.index')->with('success', 'Property'.$property->title . 'has been edited successfully');
 

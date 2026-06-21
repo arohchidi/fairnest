@@ -1,6 +1,11 @@
 <?php
 
 namespace App\Contracts\Services;
+
+use App\Models\Property;
+use Illuminate\Database\Eloquent\Collection;
+
+
 use Illuminate\Pagination\LengthAwarePaginator;
 
 interface PropertyServiceInterface
@@ -11,6 +16,9 @@ interface PropertyServiceInterface
     public function getPropertyById(int $id);
     public function updateProperty(int $id, array $data);
     public function deleteProperty(int $id);
+    public function featuredProperties():Collection;
+    public function latestProperties():Collection;
+
 
 }
   

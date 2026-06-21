@@ -15,35 +15,36 @@ class DashboardService implements DashboardServiceInterface
     {
         return [
             'total_properties' => Property::count(),
-            'active_bookings' => 0,
+            'active_bookings' =>  Booking::where('status', 'confirmed')->count(),
             'total_users' => User::count(),
+            'active_users' => User::where('is_active', 1)->count(),
+            'in_active_users' => User::where('is_active', 0)->count(),
             'total_revenue' => 0,
             'pending_bookings' => Booking::where('status', 'pending')->count(),
             'cancelled_bookings' => Booking::where('status', 'cancelled')->count(),
-            'occupancy_rate' => $this->calculateOccupancyRate(),
+            
             'average_rating' =>  0,
         ];
     }
 
     public function getRecentBookings(int $limit = 5): array
     {
-        return Booking::with(['user', 'property'])
+        return Booking::with(['property'])
             ->latest()
             ->take($limit)
             ->get()
             ->map(function ($booking) {
                 return [
                     'id' => $booking->id,
-                    'guest_name' => $booking->user->name ?? $booking->user->username ?? 'Guest',
-                    'guest_avatar' => $booking->user->avatar,
+                    'guest_name' => $booking->username  ?? 'Guest',
+                    
                     'property_title' => $booking->property->title ?? 'N/A',
-                    'property_image' => $booking->property->featured_image,
-                    'check_in' => $booking->check_in->format('M d, Y'),
-                    'check_out' => $booking->check_out->format('M d, Y'),
+                    'property_image' => $booking->property->images,
+                    'booking_date' => $booking->booking_date,
+                    
                     'status' => $booking->status,
                     'status_color' => $this->getStatusColor($booking->status),
-                    'total_price' => $booking->total_price,
-                    'nights' => $booking->check_in->diffInDays($booking->check_out),
+                    
                 ];
             })
             ->toArray();
@@ -101,8 +102,8 @@ class DashboardService implements DashboardServiceInterface
     public function getTopProperties(int $limit = 5): array
     {
         return Property::withCount('bookings')
-            //->withAvg('reviews', 'rating')
-           // ->orderBy('bookings_count', 'desc')
+           
+           ->orderBy('bookings_count', 'desc')
             ->take($limit)
             ->get()
             ->map(function ($property) {
@@ -111,7 +112,7 @@ class DashboardService implements DashboardServiceInterface
                     'title' => $property->title,
                     'image' => $property->featured_image,
                     'location' => $property->city . ', ' . $property->country,
-                    'price_per_night' => $property->price_per_night,
+                    'rent' => $property->rent_fee,
                     'total_bookings' => $property->bookings_count,
                     'rating' => round($property->reviews_avg_rating ?? 0, 1),
                 ];
@@ -119,20 +120,7 @@ class DashboardService implements DashboardServiceInterface
             ->toArray();
     }
 
-    private function calculateOccupancyRate(): float
-    {
-        $totalProperties = Property::count();
-        if ($totalProperties === 0) return 0;
-
-        $today = Carbon::today();
-        $occupiedBookings = Booking::where('status', 'confirmed')
-            ->where('check_in', '<=', $today)
-            ->where('check_out', '>=', $today)
-            ->distinct('property_id')
-            ->count('property_id');
-
-        return round(($occupiedBookings / $totalProperties) * 100, 1);
-    }
+    
 
     private function getStatusColor(string $status): string
     {

@@ -23,6 +23,8 @@
                         <input type="text" name="search" value="{{ request('search') }}" 
                                placeholder="Title, location, or ID..."
                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2D6A4F] focus:border-transparent">
+                  
+                  
                     </div>
                     
                     
