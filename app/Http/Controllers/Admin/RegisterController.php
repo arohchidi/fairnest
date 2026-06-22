@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+
+use App\Models\Setting;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\RegisterRequest;
 use App\Services\AuthService;
@@ -9,14 +11,20 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use App\Mail\WelcomeMail;
+use Illuminate\Support\Facades\Mail;
+
+
 
 class RegisterController extends Controller
 {
     protected $authService;
+    protected $settings;
 
-    public function __construct(AuthService $authService)
+    public function __construct(AuthService $authService, Setting $settings)
     {
         $this->authService = $authService;
+        $this->settings = Setting::first();
     }
 
     
@@ -31,7 +39,7 @@ class RegisterController extends Controller
    public function register(RegisterRequest $request): RedirectResponse
     {
 
-    var_dump($request->all()); // Debug: Check incoming request data
+    
         try {
             // Use all request input if a FormRequest is not available
             $user = $this->authService->register($request->validated());
@@ -39,6 +47,15 @@ class RegisterController extends Controller
             // Auto login after registration
             $this->authService->login(
                 $request->only('email', 'password')
+            );
+
+            //send welcome email 
+            Mail::to($user->email)
+            ->queue(new WelcomeMail(
+                    $user,
+                    $this->settings->welcome_email,
+                    $this->settings->welcome_subject
+                )
             );
 
             return redirect()->route('admin.dashboard')

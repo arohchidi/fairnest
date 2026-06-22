@@ -20,7 +20,7 @@
             </div>
         </div>
         
-        <form method="POST" action="{{ route('admin.emails.send') }}" class="p-6 space-y-5">
+        <form method="POST" action="{{ route('admin.email.send') }}" class="p-6 space-y-5">
             @csrf
             
             <!-- Recipient Selection -->
@@ -167,10 +167,10 @@
     function insertTemplate(type) {
         const textarea = document.getElementById('emailEditor');
         const templates = {
-            welcome: 'Dear {{ $user_name }},\n\nWelcome to {{ config('app.name') }}! We are excited to have you on board.\n\nGet started by exploring our properties.\n\nBest regards,\nThe {{ config('app.name') }} Team',
-            booking: 'Dear {{ $user_name }},\n\nYour booking for {{ $property_title }} has been confirmed!\n\nCheck-in: {{ $check_in }}\nCheck-out: {{ $check_out }}\n\nThank you for choosing us.',
-            announcement: 'Dear {{ $user_name }},\n\nWe have an exciting announcement! We are pleased to inform you about our new features.\n\nStay tuned for more updates.\n\nBest regards,\nThe {{ config('app.name') }} Team',
-            reminder: 'Dear {{ $user_name }},\n\nThis is a friendly reminder about your upcoming booking.\n\nDon\'t forget to prepare for your stay.\n\nBest regards,\nThe {{ config('app.name') }} Team'
+            welcome: 'Dear {{ $user_name ?? '' }},\n\nWelcome to {{ config('app.name') }}! We are excited to have you on board.\n\nGet started by exploring our properties.\n\nBest regards,\nThe {{ config('app.name') }} Team',
+            booking: 'Dear {{ $user_name ?? '' }},\n\nYour booking for {{ $property_title ?? '' }} has been confirmed!\n\nCheck-in: {{ $check_in ??  ''}}\nCheck-out: {{ $check_out ?? '' }}\n\nThank you for choosing us.',
+            announcement: 'Dear {{ $user_name ?? '' }},\n\nWe have an exciting announcement! We are pleased to inform you about our new features.\n\nStay tuned for more updates.\n\nBest regards,\nThe {{ config('app.name') }} Team',
+            reminder: 'Dear {{ $user_name ?? '' }},\n\nThis is a friendly reminder about your upcoming booking.\n\nDon\'t forget to prepare for your stay.\n\nBest regards,\nThe {{ config('app.name') }} Team'
         };
         textarea.value = templates[type] || '';
     }

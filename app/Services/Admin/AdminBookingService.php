@@ -7,6 +7,9 @@ use App\Contracts\Services\AdminBookingServiceInterface;
 
 use App\Models\Booking;
 use App\Models\User;
+use App\Models\Setting;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\BookingConfirmationMail;
 
 
 class AdminBookingService implements AdminBookingServiceInterface
@@ -14,9 +17,11 @@ class AdminBookingService implements AdminBookingServiceInterface
 
 protected $propertyModel;
 protected $bookingModel;
+protected $settings;
 
-public function __construct(Booking $booking){
+public function __construct(Booking $booking, Setting $settings){
     $this->bookingModel = $booking;
+    $this->settings = Setting::first();
 }
 
 
@@ -95,10 +100,37 @@ public function show($id):Booking
     public function toggleStatus(int $id, string $data): Booking
     {
         $booking = $this->bookingModel->findOrFail($id);
+        $email = $booking->email;
+        $username = $booking->username;
         $booking->update(['status' => $data]);
+         
+
+         $bookings = $this->bookingModel->findOrFail($id);
+         $propertytitle = $bookings->property->title;
+        
+        //send email
+         $this->sendBookingEmail($email,$username,$data,$propertytitle,$bookings);
 
         return $booking;
 
+    }
+
+    private function sendBookingEmail(string $email, string $username, string $status,$propertytitle,$bookings)
+
+    {
+
+        Mail::to($email)
+            ->queue(
+                new BookingConfirmationMail(
+                   
+                    $username,
+                    $this->settings->booking_email,
+                    $this->settings->booking_subject,
+                    $propertytitle,
+                    $bookings,
+
+                )
+            );
     }
 
 
