@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\BookingController as AdminBookingController;
 use App\Http\Controllers\Admin\ReportController as AdminReportController;
 use App\Http\Controllers\Admin\ReviewController as AdminReviewController;
+use App\Http\Controllers\Admin\EmailController;
 
 
 use App\Http\Controllers\Admin\PropertyController;
@@ -162,7 +163,11 @@ Route::post('/register-test', function() {
          Route::get('reviews',[AdminReviewController::class,'index'])->name('reviews.index');
          Route::patch('reviews/status/{id}',[AdminReviewController::class,'toggleStatus'])->name('reviews.approve');
          Route::delete('reviews/delete/{id}',[AdminReviewController::class,'destroy'])->name('reviews.destroy');
-       
+
+         //emails
+         Route::get('email/send',[EmailController::class,'index'])->name('email.index');
+        Route::post('email/send',[EmailController::class,'send'])->name('email.send');
+         Route::get('/emails/preview', [EmailController::class, 'previewRecipients'])->name('emails.preview');
        
          });
 

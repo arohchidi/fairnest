@@ -55,7 +55,7 @@ class ResetPasswordController extends Controller
         try {
             $message = $this->authService->resetPassword($request->validated());
 
-            return redirect()->route('admin.login')
+            return redirect()->route('login')
                 ->with('success', 'Password reset successful. Please login with your new password.');
 
         } catch (\Exception $e) {
