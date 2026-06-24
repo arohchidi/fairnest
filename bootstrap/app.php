@@ -19,7 +19,11 @@ return Application::configure(basePath: dirname(__DIR__))
             'admin' => \App\Http\Middleware\AdminMiddleware::class,
             'agent' => \App\Http\Middleware\AgentMiddleware::class,
             'user' => \App\Http\Middleware\UserMiddleware::class,
+           
         ]);
+        $middleware->append(
+        \App\Http\Middleware\MaintenanceMode::class
+    );
     })->withProviders([
     App\Providers\AuthServiceProvider::class,
     App\Providers\DashboardServiceProvider::class,

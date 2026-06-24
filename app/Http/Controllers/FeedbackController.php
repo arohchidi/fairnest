@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Log;
 
 
 use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
-  
 class FeedbackController extends Controller
 {
     //
@@ -39,6 +39,28 @@ class FeedbackController extends Controller
         }
     }
 
+
+    //get the feedbacks
+    public function feedbacks():View
+    {
+        $data =$this->feedBackService->feedbacks();
+        $statistics = $data;
+        
+        $feedbacks = $data['feedbacks'];
+        return view('admin.feedback.index',compact('feedbacks', 'statistics'));
+    }
+
+    public function toggleStatus(int $id, Request  $request):RedirectResponse
+    {
+        try{
+
+             $this->feedBackService->toggleStatus($id, $request['status']);
+              return redirect()->route('admin.feedback.index')->with('success', 'Status has been updated successfully');
+        } catch(\Throwable $e){
+            Log::error(['trace' => $e->getTrace(), 'message' => $e->getMessage()]);
+             return redirect()->route('admin.feedback.index')->with('error', 'Whoops, something went wrong');
+        }
+    }
 
 
 

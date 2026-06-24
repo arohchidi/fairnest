@@ -119,8 +119,7 @@ public function show($id):Booking
 
     {
 
-        Mail::to($email)
-            ->queue(
+        Mail::to($email)->queue(
                 new BookingConfirmationMail(
                    
                     $username,

@@ -62,18 +62,25 @@
                         Building Trust, One <br>
                         <span class="text-[#2D6A4F]">Property at a Time</span>
                     </h2>
+
+    <p class="text-gray-600 leading-relaxed mb-4">
+                Finding accommodation shouldn’t feel like a gamble.
+           
+                    </p>
+
                     <p class="text-gray-600 leading-relaxed mb-4">
-                        {{ config('app.name') }} was founded in 2020 with a simple vision: to make property rental 
-                        as seamless and trustworthy as possible. We understand that finding a home is one of life's 
-                        most important decisions.
+                   
+ {{ config('app.name') }} is a housing and accommodation platform built to make the search for quality homes simpler, more transparent, and less stressful. We connect accommodation seekers with verified property information and trusted housing partners, helping people make better housing decisions with confidence.
                     </p>
                     <p class="text-gray-600 leading-relaxed mb-4">
-                        What started as a small team of passionate real estate enthusiasts has grown into a 
-                        platform trusted by thousands of renters and landlords across the country.
+                        We believe the housing process should be built on trust, clarity, and convenience. Whether you’re a student searching for accommodation close to campus, a young professional relocating to a new city, or someone looking for a shared apartment, FairNest is designed to make the journey easier.
                     </p>
                     <p class="text-gray-600 leading-relaxed">
-                        Today, we continue to innovate and improve, always putting our users first and 
-                        maintaining the highest standards of service and integrity.
+                       At launch, FairNest is focused on the UNEC and Maryland axis in Enugu, with a long-term vision of expanding into other student and urban housing markets across Nigeria.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed">
+FairNest is continuously building relationships with reputable agents, landlords, caretakers, and property managers to create a more reliable accommodation ecosystem for everyone.
+FairNest — Find Home. Find Confidence.
                     </p>
                     
                     <div class="flex flex-wrap gap-4 mt-6">
@@ -271,161 +278,108 @@
     </section>
     
     <!-- ============================================ -->
-    <!-- TEAM SECTION -->
-    <!-- ============================================ -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <div class="text-center mb-12" data-aos="fade-up">
-                <span class="inline-block text-sm font-semibold text-[#2D6A4F] uppercase tracking-wider bg-[#2D6A4F]/10 px-4 py-1 rounded-full mb-4">
-                    Our Team
-                </span>
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-                    The People Behind <span class="text-[#2D6A4F]">The Platform</span>
-                </h2>
-                <p class="text-gray-500 max-w-2xl mx-auto">
-                    Passionate professionals dedicated to creating the best rental experience
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                
-                <div class="bg-gray-50 rounded-2xl overflow-hidden hover:shadow-xl transition group" data-aos="fade-up" data-aos-delay="100">
-                    <div class="relative h-72 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop" 
-                             alt="Team Member" 
-                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#0A1928]/60 to-transparent"></div>
-                        <div class="absolute bottom-0 left-0 right-0 p-6">
-                            <h4 class="text-xl font-bold text-white">John Smith</h4>
-                            <p class="text-[#2D6A4F] text-sm font-medium">CEO & Founder</p>
-                        </div>
-                    </div>
-                    <div class="p-6 text-center">
-                        <p class="text-sm text-gray-500">15+ years in real estate and technology</p>
-                        <div class="flex justify-center space-x-3 mt-4">
-                            <a href="#" class="text-gray-400 hover:text-[#2D6A4F] transition"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" class="text-gray-400 hover:text-[#2D6A4F] transition"><i class="fab fa-twitter"></i></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="bg-gray-50 rounded-2xl overflow-hidden hover:shadow-xl transition group" data-aos="fade-up" data-aos-delay="200">
-                    <div class="relative h-72 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=500&fit=crop" 
-                             alt="Team Member" 
-                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#0A1928]/60 to-transparent"></div>
-                        <div class="absolute bottom-0 left-0 right-0 p-6">
-                            <h4 class="text-xl font-bold text-white">Sarah Johnson</h4>
-                            <p class="text-[#2D6A4F] text-sm font-medium">Head of Operations</p>
-                        </div>
-                    </div>
-                    <div class="p-6 text-center">
-                        <p class="text-sm text-gray-500">Expert in property management and customer experience</p>
-                        <div class="flex justify-center space-x-3 mt-4">
-                            <a href="#" class="text-gray-400 hover:text-[#2D6A4F] transition"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" class="text-gray-400 hover:text-[#2D6A4F] transition"><i class="fab fa-twitter"></i></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="bg-gray-50 rounded-2xl overflow-hidden hover:shadow-xl transition group" data-aos="fade-up" data-aos-delay="300">
-                    <div class="relative h-72 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=500&fit=crop" 
-                             alt="Team Member" 
-                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#0A1928]/60 to-transparent"></div>
-                        <div class="absolute bottom-0 left-0 right-0 p-6">
-                            <h4 class="text-xl font-bold text-white">Michael Chen</h4>
-                            <p class="text-[#2D6A4F] text-sm font-medium">Lead Developer</p>
-                        </div>
-                    </div>
-                    <div class="p-6 text-center">
-                        <p class="text-sm text-gray-500">Building innovative solutions for the rental market</p>
-                        <div class="flex justify-center space-x-3 mt-4">
-                            <a href="#" class="text-gray-400 hover:text-[#2D6A4F] transition"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" class="text-gray-400 hover:text-[#2D6A4F] transition"><i class="fab fa-twitter"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- ============================================ -->
-    <!-- TESTIMONIALS SECTION -->
-    <!-- ============================================ -->
-    <section class="py-20 relative overflow-hidden">
-        <!-- Background Image -->
-        <div class="absolute inset-0 bg-cover bg-center bg-fixed" 
-             style="background-image: url('https://images.unsplash.com/photo-1574362848149-11496d93a7c7?w=1600&h=800&fit=crop');">
-            <div class="absolute inset-0 bg-[#0A1928]/85"></div>
+<!-- WHAT WE OFFER SECTION -->
+<!-- ============================================ -->
+<section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center mb-12" data-aos="fade-up">
+            <span class="inline-block text-sm font-semibold text-[#2D6A4F] uppercase tracking-wider bg-[#2D6A4F]/10 px-4 py-1 rounded-full mb-4">
+                What We Offer
+            </span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                Everything You Need <span class="text-[#2D6A4F]">In One Place</span>
+            </h2>
+            <p class="text-gray-500 max-w-2xl mx-auto">
+                From property search to booking, we provide a complete solution for all your rental needs.
+            </p>
         </div>
         
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
-            <div class="text-center mb-12" data-aos="fade-up">
-                <span class="inline-block text-sm font-semibold text-[#2D6A4F] uppercase tracking-wider bg-white/10 backdrop-blur-sm px-4 py-1 rounded-full mb-4">
-                    Testimonials
-                </span>
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-                    What Our <span class="text-[#2D6A4F]">Community Says</span>
-                </h2>
-                <p class="text-gray-300 max-w-2xl mx-auto">
-                    Real stories from real people who found their home with us
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                
-                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:bg-white/20 transition" data-aos="fade-up" data-aos-delay="100">
-                    <div class="flex text-yellow-400 mb-3">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+            <!-- Service 1 -->
+            <div class="bg-gray-50 rounded-2xl p-6 hover:shadow-xl transition group" data-aos="fade-up" data-aos-delay="100">
+                <div class="flex items-start space-x-4">
+                    <div class="w-12 h-12 bg-[#2D6A4F]/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-[#2D6A4F] transition">
+                        <i class="fas fa-search text-[#2D6A4F] group-hover:text-white transition"></i>
                     </div>
-                    <p class="text-gray-200 text-sm leading-relaxed mb-4">
-                        "I found the perfect apartment within days! The platform is incredibly easy to use and the support team is amazing. Highly recommended!"
-                    </p>
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 bg-[#2D6A4F] rounded-full flex items-center justify-center text-white font-bold">
-                            JD
-                        </div>
-                        <div>
-                            <p class="font-semibold text-white">John Doe</p>
-                            <p class="text-sm text-gray-400">New York, USA</p>
-                        </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-800">Smart Property Search</h4>
+                        <p class="text-sm text-gray-500 mt-1">Advanced filters to find your perfect home quickly and easily.</p>
                     </div>
                 </div>
-                
-                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:bg-white/20 transition" data-aos="fade-up" data-aos-delay="200">
-                    <div class="flex text-yellow-400 mb-3">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+            </div>
+            
+            <!-- Service 2 -->
+            <div class="bg-gray-50 rounded-2xl p-6 hover:shadow-xl transition group" data-aos="fade-up" data-aos-delay="150">
+                <div class="flex items-start space-x-4">
+                    <div class="w-12 h-12 bg-[#2D6A4F]/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-[#2D6A4F] transition">
+                        <i class="fas fa-calendar-check text-[#2D6A4F] group-hover:text-white transition"></i>
                     </div>
-                    <p class="text-gray-200 text-sm leading-relaxed mb-4">
-                        "As a landlord, I've been able to find quality tenants quickly. The verification process gives me peace of mind. Excellent platform!"
-                    </p>
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 bg-[#2D6A4F] rounded-full flex items-center justify-center text-white font-bold">
-                            SM
-                        </div>
-                        <div>
-                            <p class="font-semibold text-white">Sarah Miller</p>
-                            <p class="text-sm text-gray-400">Los Angeles, USA</p>
-                        </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-800">Instant Booking</h4>
+                        <p class="text-sm text-gray-500 mt-1">Book properties instantly with real-time availability and confirmation.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Service 3 -->
+            <div class="bg-gray-50 rounded-2xl p-6 hover:shadow-xl transition group" data-aos="fade-up" data-aos-delay="200">
+                <div class="flex items-start space-x-4">
+                    <div class="w-12 h-12 bg-[#2D6A4F]/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-[#2D6A4F] transition">
+                        <i class="fas fa-building text-[#2D6A4F] group-hover:text-white transition"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-800">Verified Properties</h4>
+                        <p class="text-sm text-gray-500 mt-1">Every listing is verified for authenticity and quality assurance.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Service 4 -->
+            <div class="bg-gray-50 rounded-2xl p-6 hover:shadow-xl transition group" data-aos="fade-up" data-aos-delay="250">
+                <div class="flex items-start space-x-4">
+                    <div class="w-12 h-12 bg-[#2D6A4F]/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-[#2D6A4F] transition">
+                        <i class="fas fa-credit-card text-[#2D6A4F] group-hover:text-white transition"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-800">Secure Payments</h4>
+                        <p class="text-sm text-gray-500 mt-1">Protected transactions with industry-standard security protocols.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Service 5 -->
+            <div class="bg-gray-50 rounded-2xl p-6 hover:shadow-xl transition group" data-aos="fade-up" data-aos-delay="300">
+                <div class="flex items-start space-x-4">
+                    <div class="w-12 h-12 bg-[#2D6A4F]/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-[#2D6A4F] transition">
+                        <i class="fas fa-headset text-[#2D6A4F] group-hover:text-white transition"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-800">24/7 Support</h4>
+                        <p class="text-sm text-gray-500 mt-1">Dedicated support team available round the clock for assistance.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Service 6 -->
+            <div class="bg-gray-50 rounded-2xl p-6 hover:shadow-xl transition group" data-aos="fade-up" data-aos-delay="350">
+                <div class="flex items-start space-x-4">
+                    <div class="w-12 h-12 bg-[#2D6A4F]/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-[#2D6A4F] transition">
+                        <i class="fas fa-star text-[#2D6A4F] group-hover:text-white transition"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-800">Review & Ratings</h4>
+                        <p class="text-sm text-gray-500 mt-1">Real feedback from real users to help you make informed decisions.</p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    
+    </div>
+</section>
+
+@include('components.campus-community') 
+   @include('components.testimonials')
     <!-- ============================================ -->
     <!-- CTA SECTION -->
     <!-- ============================================ -->

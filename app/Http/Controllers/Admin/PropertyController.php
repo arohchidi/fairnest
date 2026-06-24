@@ -68,11 +68,12 @@ class PropertyController extends Controller
     public function showPropertyById($id):View{
      $id = $id;
      $data = $this->propertyService->getPropertyById($id);
+     $ratings = $data['ratings'];
      
      $property = $data['property'];
      
     
-    return view('admin.properties.show', compact('property'));
+    return view('admin.properties.show', compact('property','ratings'));
     }
 
 
