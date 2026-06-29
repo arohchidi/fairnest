@@ -7,6 +7,9 @@ use App\Http\Requests\Admin\LoginRequest;
 use App\Services\AuthService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request as FacadesRequest;
+
+
 use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
@@ -29,16 +32,15 @@ class LoginController extends Controller
     // Handle login
     public function login(LoginRequest $request): RedirectResponse
     {
+    $ip = FacadesRequest::ip();
        
     
         try {
             $user = $this->authService->login(
-                $request->only('email', 'password')
-                
-            );
+                $request->all('email', 'password'), $ip);
  Log::info($request->all()); 
             return redirect()->to('admin/dashboard')
-    ->with('success', 'Welcome back, ' . $user->name . '!');
+    ->with('success', 'Welcome back');
 
         } catch (\Exception $e) {
             return back()

@@ -8,16 +8,35 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Support\Facades\RateLimiter;
+use App\Helper;
+
+
 use Illuminate\Support\Str;
 
 class AuthService implements AuthServiceInterface
 {
-    public function login(array $credentials)
+    public function login(array $credentials, $ip)
     {
+
+       $maxAttempts = Helper::getLoginAttempts();
+
+    $key = Str::lower($credentials['email']).'|'.$ip;
+
+    if (RateLimiter::tooManyAttempts($key, $maxAttempts)) {
+
+        $seconds = RateLimiter::availableIn($key);
+
+
+        throw new \Exception("Too many login attempts. Try again in {$seconds} seconds.");
+    }
+
+
         if (!Auth::attempt($credentials)) {
+             RateLimiter::hit($key, 300); // lockout duration 5 minutes
             throw new \Exception('Invalid credentials');
         }
-
+          RateLimiter::clear($key);
         $user = Auth::user();
 
         if (!$user->is_active) {

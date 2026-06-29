@@ -16,6 +16,9 @@ use App\Http\Controllers\Admin\BookingController as AdminBookingController;
 use App\Http\Controllers\Admin\ReportController as AdminReportController;
 use App\Http\Controllers\Admin\ReviewController as AdminReviewController;
 use App\Http\Controllers\Admin\EmailController;
+use App\Http\Controllers\Admin\MatchingController;
+
+
 
 
 use App\Http\Controllers\Admin\PropertyController;
@@ -67,11 +70,11 @@ Route::get('/booking/success', [BookingController::class, 'success'])->name('boo
   
 
         // Login
-        Route::get('/login', [LoginController::class, 'index'])->name('login');
+        Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('throttle:5,1');
         Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 
         // Register
-        Route::get('/register', [RegisterController::class, 'index'])->name('register');
+        Route::get('/register', [RegisterController::class, 'index'])->name('register')->middleware('throttle:5,1');
         Route::post('/register', [RegisterController::class, 'register'])->name('register.submit');
         
         // Forgot Password
@@ -168,7 +171,17 @@ Route::post('/register-test', function() {
          Route::get('email/send',[EmailController::class,'index'])->name('email.index');
         Route::post('email/send',[EmailController::class,'send'])->name('email.send');
          Route::get('/emails/preview', [EmailController::class, 'previewRecipients'])->name('emails.preview');
-       
+
+         //feedbacks
+         Route::get('feedback', [FeedbackController::class, 'feedbacks'])->name('feedback.index');
+         Route::patch('feedback/status/{id}', [FeedbackController::class, 'toggleStatus'])->name('feedback.update');
+         Route::delete('feedback/destroy/{id}', [FeedbackController::class, 'destroy'])->name('feedback.destroy');
+         
+        
+
+         Route::get('/matching', [MatchingController::class, 'index'])->name('matching.index');
+         Route::post('/matching/connect', [MatchingController::class, 'connect'])->name('matching.connect');
+
          });
 
 
@@ -178,3 +191,5 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 
 Route::get('/admin/register-simple', [SimpleRegisterController::class, 'showForm']);
 Route::post('/admin/register-simples', [SimpleRegisterController::class, 'register']);
+
+

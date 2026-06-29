@@ -173,7 +173,7 @@
 <div id="statusModal" class="fixed inset-0 bg-black/50 z-50 hidden items-center justify-center">
     <div class="bg-white rounded-2xl shadow-xl max-w-md w-full mx-4 p-6">
         <h3 class="text-lg font-semibold text-gray-800 mb-4">Update Report Status</h3>
-        <form id="statusForm" method="POST">
+        <form id="statusForm" method="POST" action="{{ route('admin.reports.status', $report) }}">
             @csrf
             @method('PATCH')
             <div class="space-y-4">
@@ -196,7 +196,7 @@
 @push('scripts')
 <script>
     function updateStatus(id) {
-        document.getElementById('statusForm').action = '/admin/reports/' + id + '/status';
+        document.getElementById('statusForm').action = '/admin/reports/status/' + id ;
         document.getElementById('statusModal').classList.remove('hidden');
         document.getElementById('statusModal').classList.add('flex');
     }

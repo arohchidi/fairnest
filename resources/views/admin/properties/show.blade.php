@@ -114,14 +114,14 @@
                     <div class="px-6 py-4 hover:bg-gray-50 transition">
                         <div class="flex justify-between items-center">
                             <div>
-                                <p class="font-medium text-gray-800">{{ $booking->user->name ?? 'Guest' }}</p>
+                                <p class="font-medium text-gray-800">{{ $booking->username ?? 'Guest' }}</p>
                                 <p class="text-sm text-gray-500">
-                                    {{ $booking->check_in->format('M d, Y') }} - {{ $booking->check_out->format('M d, Y') }}
+                                    {{ $booking->booking_date }} 
                                 </p>
-                                <p class="text-xs text-gray-400 mt-1">{{ $booking->check_in->diffInDays($booking->check_out) }} nights</p>
+                               
                             </div>
                             <div class="text-right">
-                                <p class="font-semibold text-[#2D6A4F]">${{ number_format($booking->total_price, 2) }}</p>
+                                
                                 <span class="inline-block px-2 py-1 text-xs rounded-full 
                                     {{ $booking->status == 'confirmed' ? 'bg-green-100 text-green-700' : '' }}
                                     {{ $booking->status == 'pending' ? 'bg-yellow-100 text-yellow-700' : '' }}
@@ -286,31 +286,32 @@
                 <div class="p-6">
                     <div class="text-center mb-4">
                         <div class="flex justify-center text-yellow-400 text-2xl mb-2">
-                            @php
-                                $fullStars = floor($property->rating);
-                                $halfStar = ($property->rating - $fullStars) >= 0.5;
-                            @endphp
-                            @for($i = 1; $i <= 5; $i++)
-                                @if($i <= $fullStars)
-                                    <i class="fas fa-star"></i>
-                                @elseif($i == $fullStars + 1 && $halfStar)
-                                    <i class="fas fa-star-half-alt"></i>
-                                @else
-                                    <i class="far fa-star"></i>
-                                @endif
-                            @endfor
+                             @php
+    $avg_rating = $ratings->avg() ?? 0;
+@endphp
+                                @for ($i = 1; $i <= 5; $i++)
+    @if ($i <= floor($avg_rating))
+        <i class="fas fa-star"></i>
+    @elseif ($i - 0.5 <= $avg_rating)
+        <i class="fas fa-star-half-alt"></i>
+    @else
+        <i class="far fa-star"></i>
+    @endif
+@endfor
                         </div>
-                        <p class="text-2xl font-bold text-gray-800">{{ number_format($property->rating, 1) }}</p>
+                        <p class="text-2xl font-bold text-gray-800">{{
+    $avg_rating =  number_format($ratings->avg(),1) ?? 0;
+                            }}</p>
                         <p class="text-sm text-gray-500">Based on {{ count($property->reviews) }} reviews</p>
                     </div>
                     <div class="space-y-3 max-h-64 overflow-y-auto">
                         @foreach($property->reviews->take(3) as $review)
                         <div class="border-t border-gray-100 pt-3">
                             <div class="flex items-center justify-between mb-1">
-                                <span class="font-medium text-gray-800">{{ $review->user->name ?? 'Anonymous' }}</span>
+                                <span class="font-medium text-gray-800">{{ ucfirst($review->name) ?? 'Anonymous' }}</span>
                                 <div class="flex text-yellow-400 text-xs">
                                     @for($i = 1; $i <= 5; $i++)
-                                        <i class="{{ $i <= $review->rating ? 'fas' : 'far' }} fa-star"></i>
+                                        <i class="{{ $i <= $review->ratings ? 'fas' : 'far' }} fa-star"></i>
                                     @endfor
                                 </div>
                             </div>
