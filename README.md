@@ -9,7 +9,11 @@ A web-based property listing platform that allows users to search for rental pro
 ![FairNest Mockup](images/fairnest_mockup.png)
 ![FairNest Mockup](images/fairnest_properties_mockup.png)
 ![FairNest Mockup](images/fairnest_dashboard_mockup.png)
-![FairNest Mockup](images/fairnest_dashboard1_mockup.png)
+
+
+<p align="center">
+  <img src="images/fairnest_dashboard1_mockup.png" alt="FairNest Website Mockup" width="900">
+</p>
 
 ## Live Demo
 
