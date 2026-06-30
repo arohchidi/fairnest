@@ -4,6 +4,17 @@ A web-based property listing platform that allows users to search for rental pro
 
 ---
 
+## Preview
+
+![FairNest Mockup](images/fairnest_mockup.png)
+![FairNest Mockup](images/fairnest_properties_mockup.png)
+![FairNest Mockup](images/fairnest_dashboard_mockup.png)
+![FairNest Mockup](images/fairnest_dashboard1_mockup.png)
+
+## Live Demo
+
+https://fairnest.com.ng
+
 ## 🚀 Project Overview
 
 This platform simplifies the rental discovery process by connecting property seekers, agents, and administrators in a structured ecosystem.
