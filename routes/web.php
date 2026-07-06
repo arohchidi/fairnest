@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\ReportController as AdminReportController;
 use App\Http\Controllers\Admin\ReviewController as AdminReviewController;
 use App\Http\Controllers\Admin\EmailController;
 use App\Http\Controllers\Admin\MatchingController;
+use App\Http\Controllers\Admin\ApartmentRequestController as AdminApartmentRequestController;
 
 
 
@@ -30,6 +31,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\ApartmentRequestController;
 
 
 
@@ -52,6 +54,10 @@ Route::get('/property-details/{id}', [FrontPropertyController::class, 'propertyD
 Route::get('properties/report/{id}', [FrontPropertyController::class, 'report'])->name('property.report');
 Route::post('properties/report/{id}', [ReportController::class, 'store'])->name('property.report.submit');
 
+
+// request apartment routes
+Route::get('/apartments/request', [ApartmentRequestController::class, 'create'])->name('apartments.request');
+Route::post('/apartments/request', [ApartmentRequestController::class, 'store'])->name('apartments.request.submit');
 
 //Reviews
 Route::post('property/review/{id}',[ReviewController::class, 'store'])->name('property.review.store');
@@ -178,9 +184,16 @@ Route::post('/register-test', function() {
          Route::delete('feedback/destroy/{id}', [FeedbackController::class, 'destroy'])->name('feedback.destroy');
          
         
-
+        // roommate matching
          Route::get('/matching', [MatchingController::class, 'index'])->name('matching.index');
          Route::post('/matching/connect', [MatchingController::class, 'connect'])->name('matching.connect');
+        
+
+         // apartment requests
+        Route::get('/apartment-requests', [AdminApartmentRequestController::class, 'index'])->name('apartment-requests.index');
+        Route::patch('/apartment-requests/{id}/status', [AdminApartmentRequestController::class, 'updateStatus'])->name('apartment-requests.status');
+        Route::delete('/apartment-requests/{id}', [AdminApartmentRequestController::class, 'destroy'])->name('apartment-requests.destroy');
+        Route::get('/apartments/success', [ApartmentRequestController::class, 'success'])->name('apartments.success');
 
          });
 

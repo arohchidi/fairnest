@@ -40,6 +40,7 @@ return Application::configure(basePath: dirname(__DIR__))
     App\Providers\AdminReportServiceProvider::class,
     App\Providers\AdminReviewServiceProvider::class,
     App\Providers\EmailServiceProvider::class,
+    App\Providers\ApartmentRequestServiceProvider::class,
 ])
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(
